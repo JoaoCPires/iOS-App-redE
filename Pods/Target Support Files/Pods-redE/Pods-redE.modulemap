@@ -1,0 +1,6 @@
+framework module Pods_redE {
+  umbrella header "Pods-redE-umbrella.h"
+
+  export *
+  module * { export * }
+}
