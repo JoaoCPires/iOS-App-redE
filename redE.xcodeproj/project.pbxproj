@@ -192,14 +192,14 @@
 			isa = PBXGroup;
 			children = (
 				CF53B78A21CC2DBE006BBEBA /* AnnotationWrapper.swift */,
+				CF53B79221CC56DF006BBEBA /* DepartureManager.swift */,
 				CF53B79021CC4DCC006BBEBA /* Departures.swift */,
+				CFBC3D1E21CD03D50007EE7D /* Service.swift */,
 				CFEA86C221CBE7A70077BA60 /* TrainStation.swift */,
 				CF53B77921CC1161006BBEBA /* TrainStationManager.swift */,
-				CF53B79221CC56DF006BBEBA /* DepartureManager.swift */,
 				CFEA86C021CBE7770077BA60 /* ApiManagers */,
 				CF53B77B21CC1207006BBEBA /* EventBus */,
 				CF53B77821CC0F4A006BBEBA /* Persistency */,
-				CFBC3D1E21CD03D50007EE7D /* Service.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";

@@ -13,6 +13,7 @@ class Cache {
     static let repository = Cache()
     private (set) var trainStations = TrainStations()
     private (set) var departures = Departures()
+    private (set) var stationTag = String()
     
     func set(trainStations: TrainStations) {
         
@@ -22,5 +23,10 @@ class Cache {
     func set(departures: Departures) {
         
         self.departures = departures
+    }
+    
+    func set(stationTag:String) {
+        
+        self.stationTag = stationTag
     }
 }

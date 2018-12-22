@@ -13,5 +13,13 @@
       <ContextState
          contextName = "TrainStationsApiManager.getAllDetails(from:):TrainStationsApiManager.swift">
       </ContextState>
+      <ContextState
+         contextName = "closure #1 in TrainStationsApiManager.getAll(apiReply:):TrainStationsApiManager.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "Cache.repository.stationTag">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
    </ContextStates>
 </VariablesViewState>
