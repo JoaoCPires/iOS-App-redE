@@ -11,6 +11,36 @@ import MapKit
 
 typealias TrainStations = [TrainStation]
 
+extension Array where Element: TrainStation {
+    
+    func getLines() -> [String] {
+        
+        var allLines = [String]()
+        for element in self {
+            
+            if !allLines.contains(element.linha!) {
+                
+                allLines.append(element.linha!)
+            }
+        }
+        return allLines.sorted()
+    }
+    
+    func filtered(forLine selectedLine: String) -> TrainStations{
+        
+        var selectedStations = TrainStations()
+        for station in self {
+            
+            if station.linha! == selectedLine {
+                
+                selectedStations.append(station)
+            }
+        }
+        return selectedStations
+    }
+    
+}
+
 class TrainStation: NSObject, Codable {
     var name: String?
 //    let servicosEquipamentos: ServicosEquipamentos?

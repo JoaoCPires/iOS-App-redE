@@ -142,8 +142,6 @@ class ControllerTrainStation: ControllerBase {
             self.present(alertController, animated: true, completion: nil)
 
         case .police: showAlert(with: "Estação de Policia")
-        default:
-            break
         }
     }
 

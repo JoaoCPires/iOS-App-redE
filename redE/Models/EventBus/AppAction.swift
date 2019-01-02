@@ -41,6 +41,7 @@ class AppAction {
 enum ActionType {
     case allTrainStations
     case trainStation
+    case filteredTrainStations
     case departure
     case none
 }

@@ -9,13 +9,15 @@
 import UIKit
 
 protocol TrainStationDelegate {
-    func didReceive(stations: TrainStations)
+    func didReceive(allStations: TrainStations)
+    func didReceive(filteredStations: TrainStations)
     func didReceive(station: TrainStation)
 }
 
 class TrainStationManager {
     
     static let shared = TrainStationManager()
+    private var filter = String()
     
     var delegate: TrainStationDelegate?
     
@@ -33,11 +35,11 @@ class TrainStationManager {
     func resquestStations() {
         
         let allStations = Cache.repository.trainStations
-        delegate?.didReceive(stations: allStations)
+        delegate?.didReceive(allStations: allStations)
         TrainStationsApiManager.shared.getAll { (allStations: TrainStations) in
             
             PersistencyManager.shared.save(trainStations: allStations)
-            self.delegate?.didReceive(stations: allStations)
+            self.delegate?.didReceive(allStations: allStations)
         }
     }
     
@@ -52,5 +54,29 @@ class TrainStationManager {
                 break
             }
         }
+    }
+    
+    func requestFilteredStations() {
+        
+        let allStations = Cache.repository.trainStations
+        var filteredStations = TrainStations()
+        for station in allStations {
+            
+            if station.linha! == filter {
+                
+                filteredStations.append(station)
+            }
+        }
+        self.delegate?.didReceive(filteredStations: filteredStations)
+    }
+    
+    func setNew(filter: String) {
+        
+        self.filter = filter
+    }
+    
+    func getSetFilter() -> String {
+        
+        return filter
     }
 }

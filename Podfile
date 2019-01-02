@@ -12,4 +12,5 @@ target 'redE' do
   pod 'Firebase/Database'
   pod 'BetterSegmentedControl', '~> 1.0'
   pod 'Pulley'
+  pod 'Presentr'
 end

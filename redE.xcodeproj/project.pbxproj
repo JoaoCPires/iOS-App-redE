@@ -30,6 +30,7 @@
 		CF53B79521CC5A90006BBEBA /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53B79421CC5A90006BBEBA /* DateExtension.swift */; };
 		CF561FB221CBEB250065E7B0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF561FB121CBEB250065E7B0 /* Constants.swift */; };
 		CF561FB521CBF14E0065E7B0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF561FB421CBF14E0065E7B0 /* GoogleService-Info.plist */; };
+		CF79749D21CE7C1700E7DC23 /* ControllerStationFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF79749C21CE7C1700E7DC23 /* ControllerStationFilter.swift */; };
 		CFBC3D1F21CD03D50007EE7D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC3D1E21CD03D50007EE7D /* Service.swift */; };
 		CFBC3D2221CD0FAE0007EE7D /* CellSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC3D2021CD0FAE0007EE7D /* CellSchedule.swift */; };
 		CFBC3D2321CD0FAE0007EE7D /* CellSchedule.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBC3D2121CD0FAE0007EE7D /* CellSchedule.xib */; };
@@ -70,6 +71,7 @@
 		CF53B79421CC5A90006BBEBA /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		CF561FB121CBEB250065E7B0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		CF561FB421CBF14E0065E7B0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CF79749C21CE7C1700E7DC23 /* ControllerStationFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerStationFilter.swift; sourceTree = "<group>"; };
 		CFBC3D1E21CD03D50007EE7D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		CFBC3D2021CD0FAE0007EE7D /* CellSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSchedule.swift; sourceTree = "<group>"; };
 		CFBC3D2121CD0FAE0007EE7D /* CellSchedule.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellSchedule.xib; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				CFED39F021CBE49D008D7984 /* ControllerStationMap.swift */,
 				CF53B78C21CC3AF6006BBEBA /* ControllerTrainStation.swift */,
 				CF53B78E21CC40D6006BBEBA /* ControllerContainer.swift */,
+				CF79749C21CE7C1700E7DC23 /* ControllerStationFilter.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IBLocalizable/IBLocalizable.framework",
+				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
 				"${BUILT_PRODUCTS_DIR}/Pulley/Pulley.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -344,6 +348,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IBLocalizable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pulley.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -401,6 +406,7 @@
 				CFBC3D1F21CD03D50007EE7D /* Service.swift in Sources */,
 				CFED39EF21CBE49D008D7984 /* AppDelegate.swift in Sources */,
 				CFBC3D2221CD0FAE0007EE7D /* CellSchedule.swift in Sources */,
+				CF79749D21CE7C1700E7DC23 /* ControllerStationFilter.swift in Sources */,
 				CF53B77721CC0F27006BBEBA /* PersistencyManager.swift in Sources */,
 				CF53B78721CC193F006BBEBA /* ControllerBase.swift in Sources */,
 				CF10E1FD21CCFC4D009F12F4 /* UITableViewExtension.swift in Sources */,

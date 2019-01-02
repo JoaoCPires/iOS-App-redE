@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "FBA04E7FC0A7B23C26D0F0A693C5F8BC"
-               BlueprintName = "Pulley"
+               BlueprintIdentifier = "B328F8B92DC38ED2D908905F42E89EEE"
+               BlueprintName = "Presentr"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "Pulley.framework">
+               BuildableName = "Presentr.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

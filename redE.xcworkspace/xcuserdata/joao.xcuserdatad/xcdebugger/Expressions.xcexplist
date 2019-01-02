@@ -3,6 +3,14 @@
    version = "1.0">
    <ContextStates>
       <ContextState
+         contextName = "ControllerStationFilter.pickerView(_:numberOfRowsInComponent:):ControllerStationFilter.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.filters.count">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
          contextName = "GLOBAL">
          <PersistentStrings>
             <PersistentString
@@ -11,7 +19,32 @@
          </PersistentStrings>
       </ContextState>
       <ContextState
+         contextName = "closure #1 in EventBus.runAction(for:):EventBus.swift">
+      </ContextState>
+      <ContextState
          contextName = "TrainStationsApiManager.getAllDetails(from:):TrainStationsApiManager.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ControllerStationMap.didTouchFilter(_:):ControllerStationMap.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "stations.getLines()">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "ControllerStationFilter.viewWillAppear(_:):ControllerStationFilter.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ControllerBase.runAction():ControllerBase.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "self.registrations">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "TrainStationManager.requestFilteredStations():TrainStationManager.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in TrainStationsApiManager.getAll(apiReply:):TrainStationsApiManager.swift">
@@ -20,6 +53,15 @@
                value = "Cache.repository.stationTag">
             </PersistentString>
          </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "EventBus.handle&lt;A&gt;(appEvent:forRegistry:):EventBus.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ControllerStationFilter.viewDidAppear(_:):ControllerStationFilter.swift">
+      </ContextState>
+      <ContextState
+         contextName = "ControllerStationMap.applyFilter():ControllerStationMap.swift">
       </ContextState>
    </ContextStates>
 </VariablesViewState>

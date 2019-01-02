@@ -58,7 +58,7 @@ class EventBus: TrainStationDelegate, DepartureDelegate {
             case .allTrainStations: TrainStationManager.shared.resquestStations()
             case .trainStation: TrainStationManager.shared.requestStation(withId: appAction.stringID!)
             case .departure: DepartureManager.shared.resquestDeparture(withId: appAction.stringID!)
-                
+            case .filteredTrainStations: TrainStationManager.shared.requestFilteredStations()
             }
         }
     }
@@ -77,10 +77,16 @@ class EventBus: TrainStationDelegate, DepartureDelegate {
     }
     
     // MARK: - TrainStation Delegate
-    func didReceive(stations: TrainStations) {
+    func didReceive(allStations: TrainStations) {
         
-        let newEvent = AppEvent(data: stations)
+        let newEvent = AppEvent(data: allStations)
         handle(appEvent: newEvent, forRegistry: .allTrainStations)
+    }
+    
+    func didReceive(filteredStations: TrainStations) {
+        
+        let newEvent = AppEvent(data: filteredStations)
+        handle(appEvent: newEvent, forRegistry: .filteredTrainStations)
     }
     
     func didReceive(station: TrainStation) {

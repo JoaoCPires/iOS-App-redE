@@ -8,14 +8,33 @@
 
 import UIKit
 import MapKit
+import Presentr
 
 class ControllerStationMap: ControllerBase {
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var labelSelectedFilter: UILabel!
+    @IBOutlet weak var buttonFilter: UIButton!
+    
     
     static let idetifier = "ControllerStationMap"
 
     private var stations = TrainStations()
     private var initialCoordinates = CLLocationCoordinate2D()
+    private var presenter: Presentr = {
+        let width = ModalSize.full
+        let height = ModalSize.full
+        let center = ModalCenterPosition.customOrigin(origin: CGPoint(x: 0, y: 0))
+        let customType = PresentationType.custom(width: width, height: height, center: center)
+        
+        let customPresenter = Presentr(presentationType: customType)
+        customPresenter.transitionType = TransitionType.crossDissolve
+        customPresenter.dismissTransitionType = .crossDissolve
+        customPresenter.roundCorners = false
+        customPresenter.backgroundColor = .lightGray
+        customPresenter.backgroundOpacity = 0
+        customPresenter.dismissOnSwipe = false
+        return customPresenter
+    }()
 
     var delegate: StationDelegate?
     
@@ -23,7 +42,7 @@ class ControllerStationMap: ControllerBase {
     override func busRegistration() {
 
         self.busIdentifier = ControllerStationMap.idetifier
-        let registration = AppAction(withAction: .allTrainStations)
+        let registration = AppAction(withAction: .filteredTrainStations)
         registrations.append(registration)
     }
 
@@ -39,6 +58,11 @@ class ControllerStationMap: ControllerBase {
 
         super.viewDidLoad()
         setupMap()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        super.viewDidAppear(animated)
     }
 
     // MARK: - Constructors
@@ -57,6 +81,15 @@ class ControllerStationMap: ControllerBase {
         }
     }
 
+    // MARK: - Actions
+    @IBAction func didTouchFilter(_ sender: UIButton) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: ControllerStationFilter.identifier) as! ControllerStationFilter
+        controller.delegate = self
+        customPresentViewController(presenter, viewController: controller, animated: true, completion: nil)
+    }
+    
 }
 
 extension ControllerStationMap: MKMapViewDelegate {
@@ -87,5 +120,12 @@ extension ControllerStationMap: MKMapViewDelegate {
         
         guard let annotation = view.annotation as? AnnotationWrapper else { return }
         delegate?.didSelect(station: annotation.station)
+    }
+}
+
+extension ControllerStationMap: FilterDelegate {
+    
+    func applyFilter() {
+        runAction()
     }
 }
