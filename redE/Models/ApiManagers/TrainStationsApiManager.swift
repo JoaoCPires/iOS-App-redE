@@ -12,11 +12,10 @@ import FirebaseDatabase
 class TrainStationsApiManager {
 
     static let shared = TrainStationsApiManager()
-    var ref: DatabaseReference!
+    var ref: DatabaseReference = Database.database().reference()
 
     func getAll(apiReply: @escaping((TrainStations) -> Void)) {
-        
-        ref = Database.database().reference()
+
         ref.child("tag").observeSingleEvent(of: .value) { (snap:DataSnapshot) in
             let newTag = snap.value as! String
             if !(newTag == Cache.repository.stationTag) {

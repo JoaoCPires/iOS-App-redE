@@ -34,6 +34,7 @@
 		CFBC3D1F21CD03D50007EE7D /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC3D1E21CD03D50007EE7D /* Service.swift */; };
 		CFBC3D2221CD0FAE0007EE7D /* CellSchedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBC3D2021CD0FAE0007EE7D /* CellSchedule.swift */; };
 		CFBC3D2321CD0FAE0007EE7D /* CellSchedule.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFBC3D2121CD0FAE0007EE7D /* CellSchedule.xib */; };
+		CFBF108F21E0CFA8008CE9EB /* ControllerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFBF108E21E0CFA8008CE9EB /* ControllerSettings.swift */; };
 		CFEA86BB21CBE4D10077BA60 /* ArrivalApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA86BA21CBE4D10077BA60 /* ArrivalApiManager.swift */; };
 		CFEA86BD21CBE4FB0077BA60 /* DepartureApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA86BC21CBE4FB0077BA60 /* DepartureApiManager.swift */; };
 		CFEA86BF21CBE5420077BA60 /* TrainStationsApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CFEA86BE21CBE5420077BA60 /* TrainStationsApiManager.swift */; };
@@ -75,6 +76,7 @@
 		CFBC3D1E21CD03D50007EE7D /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		CFBC3D2021CD0FAE0007EE7D /* CellSchedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellSchedule.swift; sourceTree = "<group>"; };
 		CFBC3D2121CD0FAE0007EE7D /* CellSchedule.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellSchedule.xib; sourceTree = "<group>"; };
+		CFBF108E21E0CFA8008CE9EB /* ControllerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerSettings.swift; sourceTree = "<group>"; };
 		CFEA86BA21CBE4D10077BA60 /* ArrivalApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArrivalApiManager.swift; sourceTree = "<group>"; };
 		CFEA86BC21CBE4FB0077BA60 /* DepartureApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureApiManager.swift; sourceTree = "<group>"; };
 		CFEA86BE21CBE5420077BA60 /* TrainStationsApiManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainStationsApiManager.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				CF53B78C21CC3AF6006BBEBA /* ControllerTrainStation.swift */,
 				CF53B78E21CC40D6006BBEBA /* ControllerContainer.swift */,
 				CF79749C21CE7C1700E7DC23 /* ControllerStationFilter.swift */,
+				CFBF108E21E0CFA8008CE9EB /* ControllerSettings.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -411,6 +414,7 @@
 				CF53B78721CC193F006BBEBA /* ControllerBase.swift in Sources */,
 				CF10E1FD21CCFC4D009F12F4 /* UITableViewExtension.swift in Sources */,
 				CF561FB221CBEB250065E7B0 /* Constants.swift in Sources */,
+				CFBF108F21E0CFA8008CE9EB /* ControllerSettings.swift in Sources */,
 				CF53B79321CC56DF006BBEBA /* DepartureManager.swift in Sources */,
 				CF53B77321CC0710006BBEBA /* Storage.swift in Sources */,
 				CFEA86BB21CBE4D10077BA60 /* ArrivalApiManager.swift in Sources */,
@@ -565,6 +569,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GE86H7RNX5;
 				INFOPLIST_FILE = redE/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -584,6 +589,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = GE86H7RNX5;
 				INFOPLIST_FILE = redE/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

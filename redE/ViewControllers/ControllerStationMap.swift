@@ -15,7 +15,6 @@ class ControllerStationMap: ControllerBase {
     @IBOutlet weak var labelSelectedFilter: UILabel!
     @IBOutlet weak var buttonFilter: UIButton!
     
-    
     static let idetifier = "ControllerStationMap"
 
     private var stations = TrainStations()
@@ -35,6 +34,22 @@ class ControllerStationMap: ControllerBase {
         customPresenter.dismissOnSwipe = false
         return customPresenter
     }()
+    
+    private var presenterSettings: Presentr = {
+        let width = ModalSize.full
+        let height = ModalSize.full
+        let center = ModalCenterPosition.customOrigin(origin: CGPoint(x: 0, y: 0))
+        let customType = PresentationType.custom(width: width, height: height, center: center)
+        
+        let customPresenter = Presentr(presentationType: customType)
+        customPresenter.transitionType = TransitionType.coverVertical
+        //customPresenter.dismissTransitionType = .
+        customPresenter.roundCorners = false
+        customPresenter.backgroundColor = .lightGray
+        customPresenter.backgroundOpacity = 0
+        customPresenter.dismissOnSwipe = false
+        return customPresenter
+    }()
 
     var delegate: StationDelegate?
     
@@ -42,7 +57,7 @@ class ControllerStationMap: ControllerBase {
     override func busRegistration() {
 
         self.busIdentifier = ControllerStationMap.idetifier
-        let registration = AppAction(withAction: .filteredTrainStations)
+        let registration = AppAction(withAction: .allTrainStations)
         registrations.append(registration)
     }
 
@@ -63,6 +78,7 @@ class ControllerStationMap: ControllerBase {
     override func viewDidAppear(_ animated: Bool) {
         
         super.viewDidAppear(animated)
+        runAction()
     }
 
     // MARK: - Constructors
@@ -88,6 +104,14 @@ class ControllerStationMap: ControllerBase {
         let controller = storyboard.instantiateViewController(withIdentifier: ControllerStationFilter.identifier) as! ControllerStationFilter
         controller.delegate = self
         customPresentViewController(presenter, viewController: controller, animated: true, completion: nil)
+    }
+    
+    @IBAction func didTouchSettings(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = storyboard.instantiateViewController(withIdentifier: ControllerSettings.identifier) as! ControllerSettings
+        customPresentViewController(presenterSettings, viewController: controller, animated: true, completion: nil)
+
     }
     
 }
