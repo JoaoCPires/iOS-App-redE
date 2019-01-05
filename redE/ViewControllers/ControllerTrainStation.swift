@@ -115,7 +115,7 @@ class ControllerTrainStation: ControllerBase {
 
             let alertController = UIAlertController(
                 title: "Bicicletas",
-                message: "Esta estação têm estacionamento para bicicletas",
+                message: "Esta estação tem estacionamento para bicicletas",
                 preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .default)
             alertController.addAction(action)
@@ -124,7 +124,7 @@ class ControllerTrainStation: ControllerBase {
 
             let alertController = UIAlertController(
                 title: "Acessibilidade",
-                message: "Esta estação têm acessos para pessoas de mobilidade reduzida.",
+                message: "Esta estação tem acessos para pessoas com mobilidade reduzida.",
                 preferredStyle: .alert)
             let action = UIAlertAction(title: "Ok", style: .default)
             alertController.addAction(action)
