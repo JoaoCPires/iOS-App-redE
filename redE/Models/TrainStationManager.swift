@@ -68,6 +68,7 @@ class TrainStationManager {
             }
         }
         self.delegate?.didReceive(filteredStations: filteredStations)
+        resquestStations()
     }
     
     func setNew(filter: String) {

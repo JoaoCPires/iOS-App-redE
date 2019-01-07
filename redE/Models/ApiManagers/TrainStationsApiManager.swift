@@ -12,6 +12,7 @@ import FirebaseDatabase
 class TrainStationsApiManager {
 
     static let shared = TrainStationsApiManager()
+    private let stationManager = TrainStationManager.shared
     var ref: DatabaseReference = Database.database().reference()
 
     func getAll(apiReply: @escaping((TrainStations) -> Void)) {
@@ -83,6 +84,7 @@ class TrainStationsApiManager {
                         allTrainStation.append(newStation)
                     }
                     apiReply(allTrainStation)
+                    self.stationManager.resquestStations()
                 }) { (error) in
                     print(error.localizedDescription)
                 }
