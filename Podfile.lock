@@ -56,6 +56,7 @@ PODS:
   - GoogleUtilities/UserDefaults (5.3.6):
     - GoogleUtilities/Logger
   - IBLocalizable (1.3.0)
+  - Keirmot (1.0.1)
   - leveldb-library (1.20)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
@@ -71,6 +72,7 @@ DEPENDENCIES:
   - Firebase (~> 5.15.0)
   - Firebase/Database
   - IBLocalizable (~> 1.3.0)
+  - Keirmot (from `https://github.com/keirmot/Library-KMCommon.git`, branch `master`, tag `1.0.2`)
   - Presentr
   - Pulley
 
@@ -92,6 +94,18 @@ SPEC REPOS:
     - Presentr
     - Pulley
 
+EXTERNAL SOURCES:
+  Keirmot:
+    :branch: master
+    :git: https://github.com/keirmot/Library-KMCommon.git
+    :tag: 1.0.2
+
+CHECKOUT OPTIONS:
+  Keirmot:
+    :commit: c908ab6a245ce8031467162c62b082e48fe7863c
+    :git: https://github.com/keirmot/Library-KMCommon.git
+    :tag: 1.0.2
+
 SPEC CHECKSUMS:
   Atributika: 7510276c8c58194244f1b111f1c9b90350bc37a9
   BetterSegmentedControl: 46dab79e34e9e4cd36447540f67a5b52779ad2fe
@@ -104,11 +118,12 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 98b71f5e04142793729a5ef23e5b96651ff4b70f
   GoogleUtilities: 95996bea7c7d9b8fb811b7507669a4a8762f80c7
   IBLocalizable: bebcf04d98f422a2544f2b000d19387dfe8c317b
+  Keirmot: 090f74bc6f8642674d4d3601fe08297d85174a4c
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   Presentr: 7078d7eb5d1661ebeaae60c9e42a1e534de1b993
   Pulley: 2679a2b5a9714c5eb760b1fbb535d15c60e50fb4
 
-PODFILE CHECKSUM: 76890efe54a1b2fa1dc7c7df27923f643f7b7de8
+PODFILE CHECKSUM: 8db1acee609877738f0a4a690c022d917c51e31c
 
 COCOAPODS: 1.5.3

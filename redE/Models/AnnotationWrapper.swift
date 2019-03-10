@@ -18,9 +18,17 @@ class AnnotationWrapper: NSObject, MKAnnotation {
     
     init(station: TrainStation) {
         
-        self.title = station.name ?? ""
+        self.title = nil
         self.subtitle = station.linha ?? ""
         self.coordinate = station.mapCoordinates
         self.station = station
+    }
+    
+    func viewForStation() -> ViewStation? {
+        
+        guard let stationView = ViewStation.fromNib() as? ViewStation else { return nil }
+        stationView.setup(withStation: self.station)
+        stationView.annotation = self
+        return stationView
     }
 }

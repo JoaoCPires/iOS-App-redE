@@ -12,8 +12,6 @@ import Presentr
 
 class ControllerStationMap: ControllerBase {
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var labelSelectedFilter: UILabel!
-    @IBOutlet weak var buttonFilter: UIButton!
     
     static let idetifier = "ControllerStationMap"
 
@@ -86,9 +84,11 @@ class ControllerStationMap: ControllerBase {
         
         mapView.delegate = self
         initialCoordinates = CLLocationCoordinate2D( latitude: 38.725308, longitude: -9.149855)
+        mapView.register(ViewStation.self, forAnnotationViewWithReuseIdentifier: ViewStation.identifier)
     }
     
     private func setupMapAnnotations() {
+        
         mapView.removeAnnotations(mapView.annotations)
         for station in stations {
             
@@ -98,20 +98,11 @@ class ControllerStationMap: ControllerBase {
     }
 
     // MARK: - Actions
-    @IBAction func didTouchFilter(_ sender: UIButton) {
-        
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: ControllerStationFilter.identifier) as! ControllerStationFilter
-        controller.delegate = self
-        customPresentViewController(presenter, viewController: controller, animated: true, completion: nil)
-    }
-    
     @IBAction func didTouchSettings(_ sender: Any) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: ControllerSettings.identifier) as! ControllerSettings
         customPresentViewController(presenterSettings, viewController: controller, animated: true, completion: nil)
-
     }
     
 }
@@ -120,30 +111,34 @@ extension ControllerStationMap: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         guard let annotation = annotation as? AnnotationWrapper else { return nil }
-        let identifier = "marker"
+        let identifier = "identifier"
         var view: MKMarkerAnnotationView
         if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
-            
+
             dequeuedView.annotation = annotation
             view = dequeuedView
         }
         else {
-            
+
             view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            view.canShowCallout = true
-            view.calloutOffset = CGPoint(x: 0, y: 20)
-            let buttonDetail = UIButton(type: .detailDisclosure)
-            view.rightCalloutAccessoryView = buttonDetail
+            view.canShowCallout = false
         }
-        view.animatesWhenAdded = true
+        view.animatesWhenAdded = false
+        view.selectedGlyphImage = UIImage()
         view.glyphImage = UIImage(imageLiteralResourceName: "TrainGlyph")
         return view
     }
     
-    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
+        view.canShowCallout = true
         guard let annotation = view.annotation as? AnnotationWrapper else { return }
-        delegate?.didSelect(station: annotation.station)
+        let station = annotation.station
+        let viewStation = Bundle.main.loadNibNamed(ViewStation.identifier, owner: ViewStation.self, options: nil)?.first as? ViewStation
+        viewStation?.setup(withStation: station)
+        view.detailCalloutAccessoryView = viewStation
+        view.bringSubviewToFront(view.detailCalloutAccessoryView!)
+        
     }
 }
 

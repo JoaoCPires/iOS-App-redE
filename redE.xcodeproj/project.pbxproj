@@ -12,6 +12,9 @@
 		CF10E1FB21CCFB11009F12F4 /* CellServices.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF10E1F921CCFB11009F12F4 /* CellServices.xib */; };
 		CF10E1FD21CCFC4D009F12F4 /* UITableViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF10E1FC21CCFC4D009F12F4 /* UITableViewExtension.swift */; };
 		CF10E1FF21CCFC6E009F12F4 /* UICollectionViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF10E1FE21CCFC6E009F12F4 /* UICollectionViewExtension.swift */; };
+		CF3E1E172234DA0700BFA2F4 /* ViewStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E1E162234DA0700BFA2F4 /* ViewStation.swift */; };
+		CF3E1E192234DA1A00BFA2F4 /* ViewStation.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF3E1E182234DA1A00BFA2F4 /* ViewStation.xib */; };
+		CF3E1E1D2234DE9700BFA2F4 /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF3E1E1C2234DE9700BFA2F4 /* UIViewExtension.swift */; };
 		CF53B77321CC0710006BBEBA /* Storage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53B77221CC0710006BBEBA /* Storage.swift */; };
 		CF53B77521CC0E9E006BBEBA /* Cache.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53B77421CC0E9E006BBEBA /* Cache.swift */; };
 		CF53B77721CC0F27006BBEBA /* PersistencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF53B77621CC0F27006BBEBA /* PersistencyManager.swift */; };
@@ -54,6 +57,9 @@
 		CF10E1F921CCFB11009F12F4 /* CellServices.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellServices.xib; sourceTree = "<group>"; };
 		CF10E1FC21CCFC4D009F12F4 /* UITableViewExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewExtension.swift; sourceTree = "<group>"; };
 		CF10E1FE21CCFC6E009F12F4 /* UICollectionViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewExtension.swift; sourceTree = "<group>"; };
+		CF3E1E162234DA0700BFA2F4 /* ViewStation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStation.swift; sourceTree = "<group>"; };
+		CF3E1E182234DA1A00BFA2F4 /* ViewStation.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewStation.xib; sourceTree = "<group>"; };
+		CF3E1E1C2234DE9700BFA2F4 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		CF53B77221CC0710006BBEBA /* Storage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storage.swift; sourceTree = "<group>"; };
 		CF53B77421CC0E9E006BBEBA /* Cache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cache.swift; sourceTree = "<group>"; };
 		CF53B77621CC0F27006BBEBA /* PersistencyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistencyManager.swift; sourceTree = "<group>"; };
@@ -120,6 +126,26 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
+		CF3E1E1A2234DA2400BFA2F4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CF3E1E162234DA0700BFA2F4 /* ViewStation.swift */,
+				CF3E1E182234DA1A00BFA2F4 /* ViewStation.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CF3E1E1B2234DDCF00BFA2F4 /* UserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				CF53B78821CC222A006BBEBA /* ViewControllers */,
+				CF10E1F721CCF497009F12F4 /* TableViewCells */,
+				CFBC3D1D21CD02F80007EE7D /* CollectionViewCells */,
+				CF3E1E1A2234DA2400BFA2F4 /* Views */,
+			);
+			path = UserInterface;
+			sourceTree = "<group>";
+		};
 		CF53B77821CC0F4A006BBEBA /* Persistency */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +197,7 @@
 				CF10E1FE21CCFC6E009F12F4 /* UICollectionViewExtension.swift */,
 				CF53B79421CC5A90006BBEBA /* DateExtension.swift */,
 				CF561FB121CBEB250065E7B0 /* Constants.swift */,
+				CF3E1E1C2234DE9700BFA2F4 /* UIViewExtension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -238,9 +265,7 @@
 				CF561FB321CBEB2A0065E7B0 /* Helpers */,
 				CF53B78921CC2253006BBEBA /* Storyboards */,
 				CFEA86C121CBE78F0077BA60 /* Models */,
-				CF53B78821CC222A006BBEBA /* ViewControllers */,
-				CF10E1F721CCF497009F12F4 /* TableViewCells */,
-				CFBC3D1D21CD02F80007EE7D /* CollectionViewCells */,
+				CF3E1E1B2234DDCF00BFA2F4 /* UserInterface */,
 			);
 			path = redE;
 			sourceTree = "<group>";
@@ -318,6 +343,7 @@
 				CFBC3D2321CD0FAE0007EE7D /* CellSchedule.xib in Resources */,
 				CF561FB521CBF14E0065E7B0 /* GoogleService-Info.plist in Resources */,
 				CFED39F621CBE49F008D7984 /* Assets.xcassets in Resources */,
+				CF3E1E192234DA1A00BFA2F4 /* ViewStation.xib in Resources */,
 				CFED39F421CBE49D008D7984 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -338,6 +364,7 @@
 				"${BUILT_PRODUCTS_DIR}/BetterSegmentedControl/BetterSegmentedControl.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/IBLocalizable/IBLocalizable.framework",
+				"${BUILT_PRODUCTS_DIR}/Keirmot/Keirmot.framework",
 				"${BUILT_PRODUCTS_DIR}/Presentr/Presentr.framework",
 				"${BUILT_PRODUCTS_DIR}/Pulley/Pulley.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -351,6 +378,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BetterSegmentedControl.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IBLocalizable.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Keirmot.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Presentr.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pulley.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -396,6 +424,7 @@
 				CF53B78F21CC40D6006BBEBA /* ControllerContainer.swift in Sources */,
 				CF53B77A21CC1161006BBEBA /* TrainStationManager.swift in Sources */,
 				CF53B77521CC0E9E006BBEBA /* Cache.swift in Sources */,
+				CF3E1E1D2234DE9700BFA2F4 /* UIViewExtension.swift in Sources */,
 				CF53B79121CC4DCC006BBEBA /* Departures.swift in Sources */,
 				CF53B78221CC1207006BBEBA /* EventBusListener.swift in Sources */,
 				CF53B78521CC1207006BBEBA /* EventBus.swift in Sources */,
@@ -415,6 +444,7 @@
 				CF10E1FD21CCFC4D009F12F4 /* UITableViewExtension.swift in Sources */,
 				CF561FB221CBEB250065E7B0 /* Constants.swift in Sources */,
 				CFBF108F21E0CFA8008CE9EB /* ControllerSettings.swift in Sources */,
+				CF3E1E172234DA0700BFA2F4 /* ViewStation.swift in Sources */,
 				CF53B79321CC56DF006BBEBA /* DepartureManager.swift in Sources */,
 				CF53B77321CC0710006BBEBA /* Storage.swift in Sources */,
 				CFEA86BB21CBE4D10077BA60 /* ArrivalApiManager.swift in Sources */,

@@ -4,6 +4,7 @@ platform :ios, '12.0'
 target 'redE' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
+  pod 'Keirmot', :git => 'https://github.com/keirmot/Library-KMCommon.git', :branch => 'master', :tag => '1.0.2'
 
   # Pods for Project
   pod 'IBLocalizable', '~> 1.3.0'
