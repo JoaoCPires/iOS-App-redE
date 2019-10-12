@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ViewMain.swift
 //  redE
 //
 //  Created by Joao Pires on 12/10/2019.
@@ -8,14 +8,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ViewMain: View {
     var body: some View {
-        Text("Hello World")
+        Text("Hello World!")
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct ViewMain_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ViewMain()
     }
 }
