@@ -1,2 +1,0 @@
-# HestiaProject
-Personal Library
