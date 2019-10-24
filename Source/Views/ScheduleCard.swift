@@ -42,9 +42,9 @@ struct ScheduleCard: View {
 
     private func color() -> UIColor {
         switch schedule.status {
-        case .onTime: return .green
-        case .delayed: return .orange
-        case .canceled: return .red
+        case .onTime: return AppColors.colorOnTime
+        case .delayed: return AppColors.colorDelayed
+        case .canceled: return AppColors.colorCanceled
         }
 
     }

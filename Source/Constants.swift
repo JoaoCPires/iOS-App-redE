@@ -9,6 +9,7 @@
 import UIKit
 
 typealias AppDimensions = Constants.Dimensions
+typealias AppColors = Constants.Colors
 typealias AppAction = ()->()
 
 struct Constants {
@@ -26,6 +27,11 @@ struct Constants {
 
     }
 
+    struct Colors {
+        static var colorCanceled = UIColor(named: "colorCanceled")!
+        static var colorDelayed = UIColor(named: "colorDelayed")!
+        static var colorOnTime = UIColor(named: "colorOnTime")!
+    }
 
     static func nowString() -> String {
 
