@@ -9,10 +9,17 @@
 import SwiftUI
 import MapKit
 
-struct StationView: View {
+struct StationView: View, TrainStationManagerDelegate {
+
+    func trainStationManager(didSend trainsStation: BaseStation) {
+
+        station = trainsStation
+        selectedSchedule = 0
+    }
+
 
     @State var station: BaseStation
-    @State private var selectedSchedule = 0
+    @State private var selectedSchedule = 1
 
     var body: some View {
 
@@ -35,31 +42,10 @@ struct StationView: View {
 
                     VStack(alignment: .leading) {
 
-                        VStack(alignment: .leading) {
-
-                            Text(station.stationName)
-                                .font(.title)
-
-                            Text(station.stationLine)
-                                .font(.caption)
-                                .padding(.top, 4)
-                                .padding(.bottom, 4)
-
-                            Text(station.stationAddress)
-                                .lineLimit(2)
-                                .font(.subheadline)
-
-                            if station.hasAmeneties {
-                                AmenetiesView(ameneties: station.ameneties)
-                                    .padding(.top, 4)
-                                    .padding(.bottom, 4)
-                            }
-
-                        }
-                        .padding(.leading, 20)
-                        .padding(.trailing, 20)
+                        HeaderCard(station: $station)
 
                         if station.hasContacts {
+
                             Text("Contacts")
                                 .font(.callout)
                                 .padding(.leading, 20)
@@ -67,7 +53,9 @@ struct StationView: View {
                             ScrollView(.horizontal, showsIndicators: false) {
 
                                 HStack{
+
                                     Spacer().frame(width: 20, height: 20)
+
                                     ForEach(0..<station.contacts.count) { index in
 
                                         ContactCard(contactInfo: self.station.contacts[index])
@@ -79,13 +67,12 @@ struct StationView: View {
                                     Spacer().frame(width: 20, height: 20)
                                 }
                                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 80)
-
                             }
-                            Spacer()
 
+                            Spacer()
                         }
 
-                        Picker(selection: $selectedSchedule, label: Text("What is your favorite color?")) {
+                        Picker(selection: $selectedSchedule, label: Text("Arrivals or Departures")) {
                             Text("Partidas").tag(0)
                             Text("Chegadas").tag(1)
                         }
@@ -93,6 +80,15 @@ struct StationView: View {
                         .padding(.trailing, 20)
                         .pickerStyle(SegmentedPickerStyle())
 
+                        VStack{
+
+                            ForEach(selectedSchedule == 0 ? station.departingScheduleDetails: station.arrivingScheduleDetails) { index in
+
+                                ScheduleCard(schedule: index, type: self.selectedSchedule == 0 ? .departure : .arrival)
+                            }
+                        }
+                        .padding(.leading, 20)
+                        .padding(.trailing, 20)
                     }
                     .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
                     .background(Color(.systemBackground))
@@ -100,7 +96,10 @@ struct StationView: View {
                 .edgesIgnoringSafeArea(.top)
             }
             .edgesIgnoringSafeArea(.top)
+        }
+        .onAppear {
 
+            TrainStationManager.getStationDetails(for: self.station, to: self)
         }
     }
 }
@@ -135,7 +134,17 @@ struct StationView_Previews: PreviewProvider {
             cidadeProximaDistancia: nil,
             centroCidadeProximaDistancia: nil,
             pk: nil)
-        let station = BaseStation(id: 9430007, name: "LISBOA-APOLÓNIA", details: details, schedules: nil)
+
+        let origen = Comboio(id: 9430007, nome: "LISBOA-APOLÓNIA")
+        let destino = Comboio(id: 9449007, nome: "GUARDA")
+        let status = EstadoComboio(id: 2, nome: "À tabela", descricao: "À tabela")
+
+        let scheduleDetail = ScheduleDetail(id: 513, nome: "IC", horaChegada: "24-10-2019 12:30:00", horaPartida: "24-10-2019 12:30:00", comboio: nil, estacaoOrigem: origen, estacaoDestino: destino, operador: nil, estadoComboio: status)
+
+        let schedule = Schedule()
+        schedule.scheduleDetail = [scheduleDetail,scheduleDetail,scheduleDetail,scheduleDetail,scheduleDetail,scheduleDetail]
+
+        let station = BaseStation(id: 9430007, name: "LISBOA-APOLÓNIA", details: details, arrivingSchedules: schedule, departingSchedules: schedule)
 
         return StationView(station: station)
     }
@@ -196,5 +205,35 @@ struct CircleImage: View {
                 .aspectRatio(contentMode: .fill)
                 .foregroundColor(.white)
         }
+    }
+}
+
+struct HeaderCard: View {
+
+    @Binding var station: BaseStation
+
+    var body: some View {
+        VStack(alignment: .leading) {
+
+            Text(station.stationName)
+                .font(.title)
+
+            Text(station.stationLine)
+                .font(.caption)
+                .padding(.top, 4)
+                .padding(.bottom, 4)
+
+            Text(station.stationAddress)
+                .lineLimit(2)
+                .font(.subheadline)
+
+            if station.hasAmeneties {
+                AmenetiesView(ameneties: station.ameneties)
+                    .padding(.top, 4)
+                    .padding(.bottom, 4)
+            }
+        }
+        .padding(.leading, 20)
+        .padding(.trailing, 20)
     }
 }

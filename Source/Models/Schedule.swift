@@ -8,6 +8,25 @@
 
 import Foundation
 
+enum ScheduleType {
+    case arrival
+    case departure
+}
+
+enum ScheduleStatus {
+    case delayed
+    case onTime
+    case canceled
+
+    var description: String {
+        switch self {
+        case .delayed: return "Atrasado"
+        case .onTime: return "À Tabela"
+        case .canceled: return "Suprimido"
+        }
+    }
+}
+
 class Schedule: Codable {
     var scheduleDetail: [ScheduleDetail]?
     
@@ -20,12 +39,46 @@ class Schedule: Codable {
     }
 }
 
-class ScheduleDetail: Codable {
-    let id: Int?
+class ScheduleDetail: Codable, Identifiable {
+    let id: Int
     let nome, horaChegada, horaPartida: String?
     let comboio, estacaoOrigem, estacaoDestino, operador: Comboio?
     let estadoComboio: EstadoComboio?
-    
+
+    var status: ScheduleStatus {
+
+        let status = estadoComboio?.nome ?? String()
+        var result = ScheduleStatus.onTime
+
+        result = status.contains("trasado") ? .delayed : result
+        result = status.contains("uprimido") ? .canceled : result
+        
+        return result
+
+    }
+
+    func nameFor(_ type: ScheduleType) -> String {
+
+        switch type {
+        case .arrival:
+            return (estacaoOrigem?.nome ?? String()).capitalized(with: Locale(identifier: "pt"))
+
+        case .departure:
+            return (estacaoDestino?.nome ?? String()).capitalized(with: Locale(identifier: "pt"))
+        }
+    }
+
+    func timeFor(_ type: ScheduleType) -> String {
+
+        switch type {
+        case .arrival:
+            return (horaChegada ?? String()).capitalized(with: Locale(identifier: "pt"))
+
+        case .departure:
+            return (horaPartida ?? String()).capitalized(with: Locale(identifier: "pt"))
+        }
+    }
+
     enum CodingKeys: String, CodingKey {
         case id = "ID"
         case nome = "Nome"
@@ -38,7 +91,7 @@ class ScheduleDetail: Codable {
         case estadoComboio = "EstadoComboio"
     }
     
-    init(id: Int?, nome: String?, horaChegada: String?, horaPartida: String?, comboio: Comboio?, estacaoOrigem: Comboio?, estacaoDestino: Comboio?, operador: Comboio?, estadoComboio: EstadoComboio?) {
+    init(id: Int, nome: String?, horaChegada: String?, horaPartida: String?, comboio: Comboio?, estacaoOrigem: Comboio?, estacaoDestino: Comboio?, operador: Comboio?, estadoComboio: EstadoComboio?) {
         self.id = id
         self.nome = nome
         self.horaChegada = horaChegada
@@ -51,7 +104,7 @@ class ScheduleDetail: Codable {
     }
     
     convenience init() {
-        self.init(id: nil, nome: nil, horaChegada: nil, horaPartida: nil, comboio: nil, estacaoOrigem: nil, estacaoDestino: nil, operador: nil, estadoComboio: nil)
+        self.init(id: 0, nome: nil, horaChegada: nil, horaPartida: nil, comboio: nil, estacaoOrigem: nil, estacaoDestino: nil, operador: nil, estadoComboio: nil)
     }
 }
 

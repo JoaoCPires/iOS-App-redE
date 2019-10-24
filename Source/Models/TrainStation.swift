@@ -65,7 +65,8 @@ class BaseStation: Codable, Identifiable {
     let id: Int
     let name: String
     var details: TrainStation!
-    var schedules: Schedule!
+    var arrivingSchedules: Schedule!
+    var departingSchedules: Schedule!
 
     // MARK: - Computed Properties
     var stationName: String { (details.name ?? String()).capitalized(with: Locale(identifier: "pt")) }
@@ -119,14 +120,20 @@ class BaseStation: Codable, Identifiable {
 
         return result
     }
-
+    var arrivingScheduleDetails: [ScheduleDetail] {
+        arrivingSchedules?.scheduleDetail ?? [ScheduleDetail]()
+    }
+    var departingScheduleDetails: [ScheduleDetail] {
+        departingSchedules?.scheduleDetail ?? [ScheduleDetail]()
+    }
 
     // MARK: - Initializer
-    internal init(id: Int, name: String, details: TrainStation?, schedules: Schedule?) {
+    internal init(id: Int, name: String, details: TrainStation?, arrivingSchedules: Schedule?, departingSchedules: Schedule?) {
         self.id = id
         self.name = name
         self.details = details
-        self.schedules = schedules
+        self.arrivingSchedules = arrivingSchedules
+        self.departingSchedules = departingSchedules
     }
 
 }

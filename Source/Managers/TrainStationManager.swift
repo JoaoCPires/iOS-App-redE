@@ -9,21 +9,20 @@
 import Foundation
 import KeirmotUtils
 
-protocol TrainStationManagerDelegate {
+protocol TrainStationsManagerDelegate {
 
     func trainStationManager(didSend trainsStations: [BaseStation])
 }
 
-protocol TrainStationDetailDelegate {
-
-    func trainStationManager(didSendSchedule trainsStationSchedule: Schedule)
-    func trainStationManager(didSendTrainDetail trainsStationDetail: TrainStation)
+protocol TrainStationManagerDelegate {
+    func trainStationManager(didSend trainsStation: BaseStation)
 }
 
 class TrainStationManager {
 
     private static let baseStationEndPoint: String = "http://www.infraestruturasdeportugal.pt/rede/estacoes/json/"
     private static let departuresEndPoint = "http://www.infraestruturasdeportugal.pt/negocios-e-servicos/horarios/partidas"
+    private static let arrivalsEndPoint = "http://www.infraestruturasdeportugal.pt/negocios-e-servicos/horarios/chegadas"
     private static let stationDetailEndPoint = "https://keirmot.github.io/apis/rede-app.json"
 
     private static var allStations = TrainStations()
@@ -60,7 +59,7 @@ class TrainStationManager {
         _ = semaphore.wait(timeout: DispatchTime.distantFuture)
     }
 
-    class func getStation(withName query: String, to delegate: TrainStationManagerDelegate) {
+    class func getStations(withName query: String, to delegate: TrainStationsManagerDelegate) {
 
         guard let url = URL(string: baseStationEndPoint + query) else { return }
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -72,7 +71,8 @@ class TrainStationManager {
 
                     let stationData = try JSONDecoder().decode([BaseStation].self, from: data!)
                     stationData.forEach({ $0.details = detailsFor(stationWithId: String( $0.id ))})
-                    stationData.forEach({ $0.schedules = getStationSchedulesFor(stationWithId: String($0.id))})
+                    stationData.forEach({ $0.arrivingSchedules = getStationSchedulesFor(scheduleType: .arrival ,stationWithId: String($0.id))})
+                    stationData.forEach({ $0.departingSchedules = getStationSchedulesFor(scheduleType: .departure ,stationWithId: String($0.id))})
                     print("Done!")
                 }
                 catch (let error){
@@ -85,12 +85,21 @@ class TrainStationManager {
         task.resume()
     }
 
-    class func getStationSchedulesFor(stationWithId stationId: String) -> Schedule {
+    class func getStationDetails(for station: BaseStation, to delegate: TrainStationManagerDelegate) {
+
+        station.details = detailsFor(stationWithId: String( station.id ))
+        station.arrivingSchedules = getStationSchedulesFor(scheduleType: .arrival ,stationWithId: String(station.id))
+        station.departingSchedules = getStationSchedulesFor(scheduleType: .departure ,stationWithId: String(station.id))
+        delegate.trainStationManager(didSend: station)
+    }
+
+
+    class func getStationSchedulesFor(scheduleType: ScheduleType, stationWithId stationId: String) -> Schedule {
 
         let semaphore = DispatchSemaphore(value: 0)
         let today = Constants.todayString()
         let now = Constants.nowString()
-        let queryString = "\(departuresEndPoint)/\(stationId)/\(now)+\(today)"
+        let queryString = "\(scheduleType == .arrival ? arrivalsEndPoint : departuresEndPoint)/\(stationId)/\(now)+\(today)"
         let apiUrl = URL(string: queryString)!
         var result = Schedule()
         URLSession.shared.dataTask(with: apiUrl) { (data, response, error) in

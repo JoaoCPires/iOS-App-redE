@@ -47,7 +47,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             cidadeProximaDistancia: nil,
             centroCidadeProximaDistancia: nil,
             pk: nil)
-        let station = BaseStation(id: 9430007, name: "LISBOA-APOLÓNIA", details: details, schedules: nil)
+        let station = BaseStation(id: 9430007, name: "LISBOA-APOLÓNIA", details: details, arrivingSchedules: nil, departingSchedules: nil)
 
 
 
