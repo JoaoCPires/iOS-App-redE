@@ -69,7 +69,7 @@ struct CircleSystemImage: View {
                 .resizable()
                 .renderingMode(.template)
                 .frame(width: iconSize, height: iconSize, alignment: .center)
-                .aspectRatio(contentMode: .fill)
+                .aspectRatio(contentMode: .fit)
                 .foregroundColor(Color(color))
         }
     }

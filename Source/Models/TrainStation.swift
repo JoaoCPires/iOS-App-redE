@@ -55,7 +55,8 @@ enum StationAmeneties {
     }
 }
 
-struct Contact {
+struct Contact: Identifiable {
+    let id = UUID()
     var imageName: String
     var title: String
     var phoneNumber: String
@@ -101,17 +102,17 @@ class BaseStation: Codable, Identifiable {
     var contacts: [Contact] {
 
         var result = [Contact]()
-        if details?.telefone != nil || details?.telefone != "" {
+        if details?.telefone != nil && details?.telefone != "" {
 
             result.append(Contact(imageName: "TrainGlyph", title: stationName, phoneNumber: details?.telefone ?? String() ))
         }
-        if details?.policiaNome != nil || details?.policiaNome != "" {
+        if details?.policiaNome != nil && details?.policiaNome != "" {
 
             let name = details?.policiaNome ?? String()
             let phoneNumber = details?.policiaTelefone ?? String()
             result.append(Contact(imageName: "IconShield", title: name, phoneNumber: phoneNumber ))
         }
-        if details?.bombeirosNome != nil || details?.bombeirosNome != "" {
+        if details?.bombeirosNome != nil && details?.bombeirosNome != "" {
 
             let name = details?.bombeirosNome ?? String()
             let phoneNumber = details?.bombeirosTelefone ?? String()

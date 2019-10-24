@@ -56,12 +56,11 @@ struct StationView: View, TrainStationManagerDelegate {
 
                                     Spacer().frame(width: 20, height: 20)
 
-                                    ForEach(0..<station.contacts.count) { index in
+                                    ForEach(station.contacts) { contact in
 
-                                        ContactCard(contactInfo: self.station.contacts[index])
+                                        ContactCard(contactInfo: contact)
                                             .frame(minWidth: AppDimensions.screenWidth - 60, maxWidth: AppDimensions.screenWidth - 60, minHeight: AppDimensions.screenWidth - 60, maxHeight: .infinity)
-                                            .clipped()
-                                            .shadow(color: Color(.lightGray), radius: 2, x: 2, y: 2)
+                                            .shadow(color: Color(.systemGray), radius: 4, x: 2, y: 2)
                                     }
 
                                     Spacer().frame(width: 20, height: 20)
@@ -85,8 +84,12 @@ struct StationView: View, TrainStationManagerDelegate {
                             ForEach(selectedSchedule == 0 ? station.departingScheduleDetails: station.arrivingScheduleDetails) { index in
 
                                 ScheduleCard(schedule: index, type: self.selectedSchedule == 0 ? .departure : .arrival)
+                                    .background(Color(.systemBackground))
+                                    .cornerRadius(10)
+                                    .shadow(color: Color(.systemGray), radius: 4, x: 2, y: 2)
                             }
                         }
+                        .padding(.top, 8)
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
                     }

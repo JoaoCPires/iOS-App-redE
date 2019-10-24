@@ -15,13 +15,13 @@ struct ScheduleCard: View {
     var body: some View {
 
         HStack(alignment:.center) {
-            CircleSystemImage(imageName: icon(), imageSize: 32, backgroundColor: color(), color: .white)
+            Image(icon())
                 .padding()
             VStack(alignment: .leading) {
                 Text(schedule.nameFor(type))
                     .font(.headline)
 
-                Text(schedule.estadoComboio?.nome ?? "Sem Info" )//.status.description)
+                Text(schedule.status.description)
                     .font(.caption)
 
                 Text(schedule.timeFor(type))
@@ -34,9 +34,9 @@ struct ScheduleCard: View {
     private func icon() -> String {
 
         switch schedule.status {
-        case .onTime: return "chevron.right.2"
-        case .delayed: return "chevron.compact.right"
-        case .canceled: return "xmark"
+        case .onTime: return "icOnTime"
+        case .delayed: return "icDelayed"
+        case .canceled: return "icCanceled"
         }
     }
 
