@@ -60,6 +60,17 @@ struct Contact: Identifiable {
     var imageName: String
     var title: String
     var phoneNumber: String
+
+    var callingNumber: String {
+
+        var number = phoneNumber.replacingOccurrences(of: " ", with: "")
+        number = number.replacingOccurrences(of: "+351", with: "")
+        number = number.replacingOccurrences(of: "00351", with: "")
+        number = number.replacingOccurrences(of: "0351", with: "")
+        number = "+351\(number)"
+
+        return number
+    }
 }
 
 class BaseStation: Codable, Identifiable {

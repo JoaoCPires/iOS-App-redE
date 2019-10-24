@@ -61,21 +61,32 @@ class ScheduleDetail: Codable, Identifiable {
 
         switch type {
         case .arrival:
-            return (estacaoOrigem?.nome ?? String()).capitalized(with: Locale(identifier: "pt"))
+            return "Origem: \((estacaoOrigem?.nome ?? String()).capitalized(with: Locale(identifier: "pt")))"
 
         case .departure:
-            return (estacaoDestino?.nome ?? String()).capitalized(with: Locale(identifier: "pt"))
+            return "Destino: \((estacaoDestino?.nome ?? String()).capitalized(with: Locale(identifier: "pt")))"
         }
     }
 
     func timeFor(_ type: ScheduleType) -> String {
 
+        let calendar = Calendar.current
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        dateFormatter.locale = Locale(identifier: "pt")
+
         switch type {
         case .arrival:
-            return (horaChegada ?? String()).capitalized(with: Locale(identifier: "pt"))
+            let date = dateFormatter.date(from: horaChegada!)!
+            let components = calendar.dateComponents([.hour, .minute], from: date)
+
+            return ("Chegada: \(components.hour ?? 0):\(components.minute ?? 0)").capitalized(with: Locale(identifier: "pt"))
 
         case .departure:
-            return (horaPartida ?? String()).capitalized(with: Locale(identifier: "pt"))
+            let date = dateFormatter.date(from: horaPartida!)!
+            let components = calendar.dateComponents([.hour, .minute], from: date)
+
+            return ("Partida: \(components.hour ?? 0):\(components.minute ?? 0)").capitalized(with: Locale(identifier: "pt"))
         }
     }
 

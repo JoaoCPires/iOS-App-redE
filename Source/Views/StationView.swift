@@ -61,6 +61,11 @@ struct StationView: View, TrainStationManagerDelegate {
                                         ContactCard(contactInfo: contact)
                                             .frame(minWidth: AppDimensions.screenWidth - 60, maxWidth: AppDimensions.screenWidth - 60, minHeight: AppDimensions.screenWidth - 60, maxHeight: .infinity)
                                             .shadow(color: Color(.systemGray), radius: 4, x: 2, y: 2)
+                                            .onTapGesture {
+
+                                                guard let number = URL(string: "tel://" + contact.callingNumber) else { return }
+                                                UIApplication.shared.open(number)
+                                        }
                                     }
 
                                     Spacer().frame(width: 20, height: 20)
@@ -163,10 +168,14 @@ struct MapView: UIViewRepresentable {
 
     func updateUIView(_ view: MKMapView, context: Context) {
 
-        let span = MKCoordinateSpan(latitudeDelta: 2.0, longitudeDelta: 2.0)
+        let span = MKCoordinateSpan(latitudeDelta: 0.0025, longitudeDelta: 0.0025)
         let region = MKCoordinateRegion(center: coordenates, span: span)
         view.setRegion(region, animated: true)
         view.isUserInteractionEnabled = false
+
+        let newPin = MKPointAnnotation()
+        newPin.coordinate = coordenates
+        view.addAnnotation(newPin)
     }
 }
 
