@@ -62,7 +62,9 @@ class TrainStationManager {
     class func getStations(withName query: String, to delegate: TrainStationsManagerDelegate) {
 
         guard let url = URL(string: baseStationEndPoint + query) else { return }
-        let task = URLSession.shared.dataTask(with: url) { (data, response, error) in
+
+        let session = URLSession(configuration: .ephemeral)
+        let task = session.dataTask(with: url) { (data, response, error) in
 
             let responseCode = response?.httpCode ?? -1
             switch responseCode {
@@ -73,7 +75,10 @@ class TrainStationManager {
                     stationData.forEach({ $0.details = detailsFor(stationWithId: String( $0.id ))})
                     stationData.forEach({ $0.arrivingSchedules = getStationSchedulesFor(scheduleType: .arrival ,stationWithId: String($0.id))})
                     stationData.forEach({ $0.departingSchedules = getStationSchedulesFor(scheduleType: .departure ,stationWithId: String($0.id))})
-                    print("Done!")
+                    DispatchQueue.main.async {
+
+                        delegate.trainStationManager(didSend: stationData)
+                    }
                 }
                 catch (let error){
                     print(error)
@@ -90,7 +95,10 @@ class TrainStationManager {
         station.details = detailsFor(stationWithId: String( station.id ))
         station.arrivingSchedules = getStationSchedulesFor(scheduleType: .arrival ,stationWithId: String(station.id))
         station.departingSchedules = getStationSchedulesFor(scheduleType: .departure ,stationWithId: String(station.id))
-        delegate.trainStationManager(didSend: station)
+        DispatchQueue.main.async {
+
+            delegate.trainStationManager(didSend: station)
+        }
     }
 
 
@@ -102,7 +110,9 @@ class TrainStationManager {
         let queryString = "\(scheduleType == .arrival ? arrivalsEndPoint : departuresEndPoint)/\(stationId)/\(now)+\(today)"
         let apiUrl = URL(string: queryString)!
         var result = Schedule()
-        URLSession.shared.dataTask(with: apiUrl) { (data, response, error) in
+
+        let session = URLSession(configuration: .ephemeral)
+        let task = session.dataTask(with: apiUrl) { (data, response, error) in
 
             let responseCode = response?.httpCode ?? -1
             switch responseCode {
@@ -121,7 +131,8 @@ class TrainStationManager {
                 }
             default: semaphore.signal()
             }
-        }.resume()
+        }
+        task.resume()
         _ = semaphore.wait(timeout: DispatchTime.distantFuture)
         return result
     }

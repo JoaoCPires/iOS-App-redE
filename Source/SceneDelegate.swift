@@ -52,7 +52,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
         // Create the SwiftUI view that provides the window contents.
-        let contentView = StationView(station: station)
+        let contentView = StationSearchScreen()
         // ViewMap(coordinate: CLLocationCoordinate2D(latitude: 39.5, longitude: -8.0))
 
         // Use a UIHostingController as window root view controller.

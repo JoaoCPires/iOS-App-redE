@@ -1,5 +1,5 @@
 //
-//  StationView.swift
+//  StationScreen.swift
 //  redE
 //
 //  Created by Joao Pires on 23/10/2019.
@@ -9,7 +9,7 @@
 import SwiftUI
 import MapKit
 
-struct StationView: View, TrainStationManagerDelegate {
+struct StationScreen: View, TrainStationManagerDelegate {
 
     func trainStationManager(didSend trainsStation: BaseStation) {
 
@@ -154,7 +154,7 @@ struct StationView_Previews: PreviewProvider {
 
         let station = BaseStation(id: 9430007, name: "LISBOA-APOLÓNIA", details: details, arrivingSchedules: schedule, departingSchedules: schedule)
 
-        return StationView(station: station)
+        return StationScreen(station: station)
     }
 }
 
