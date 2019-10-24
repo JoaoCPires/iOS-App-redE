@@ -20,8 +20,39 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
 
+        let details = TrainStation(
+            name: "LISBOA-APOLÓNIA",
+            horarioEstacao: nil,
+            morada: "Largo dos Caminhos de Ferro - Estação de Santa Apolónia, Lisboa",
+            acessoMobilidadeReduzida: "Sim",
+            aeroportoNome: nil,
+            aeroportoDistancia: nil,
+            farmaciaNome: nil,
+            farmaciaDistancia: nil,
+            bombeirosNome: "Regimento Sapadores Bombeiros de Lisboa",
+            bombeirosTelefone: "808 215 215",
+            policiaNome: "4ª Esquadra de Segurança a Transportes Públicos",
+            policiaTelefone: "218 946 046",
+            hospitalNome: "Hospital de Santa Maria",
+            hospitalTelefone: "217 805 000",
+            coordenadas: "lat=41.547843270000001 ; long=-8.4346801609999993",
+            nodeID: nil,
+            linha: "Linha de Sintra",
+            anoContrucao: nil,
+            epClassificadoInteresse: nil,
+            telefone: "218 841 000",
+            equipamentomobilidadeReduzidaPlataformas: nil,
+            estacionamentoBicicletas: "Sim",
+            cidadeProxima: nil,
+            cidadeProximaDistancia: nil,
+            centroCidadeProximaDistancia: nil,
+            pk: nil)
+        let station = BaseStation(id: 9430007, name: "LISBOA-APOLÓNIA", details: details, schedules: nil)
+
+
+
         // Create the SwiftUI view that provides the window contents.
-        let contentView = ViewMapContainer()
+        let contentView = StationView(station: station)
         // ViewMap(coordinate: CLLocationCoordinate2D(latitude: 39.5, longitude: -8.0))
 
         // Use a UIHostingController as window root view controller.

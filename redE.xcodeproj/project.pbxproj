@@ -3,19 +3,27 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		590533A4235F09300005CA8B /* TrainStation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590533A3235F09300005CA8B /* TrainStation.swift */; };
+		590533A6235F09820005CA8B /* TrainStationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590533A5235F09820005CA8B /* TrainStationManager.swift */; };
+		590533A8235F0AB40005CA8B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590533A7235F0AB40005CA8B /* Schedule.swift */; };
+		590533AD235F0D370005CA8B /* KeirmotUtils in Frameworks */ = {isa = PBXBuildFile; productRef = 590533AC235F0D370005CA8B /* KeirmotUtils */; };
+		590533AF235F0FD40005CA8B /* FabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590533AE235F0FD40005CA8B /* FabView.swift */; };
+		590533B1235F100C0005CA8B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590533B0235F100C0005CA8B /* Constants.swift */; };
+		590533B3235F115A0005CA8B /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590533B2235F115A0005CA8B /* SearchView.swift */; };
+		592AA0872361980200091ED1 /* ContactCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592AA0862361980200091ED1 /* ContactCard.swift */; };
+		592AA08A2361BA6600091ED1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592AA0882361BA6600091ED1 /* ViewController.swift */; };
+		592AA08B2361BA6600091ED1 /* ViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 592AA0892361BA6600091ED1 /* ViewController.xib */; };
+		596CF14323607A2B00ED1A03 /* StationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596CF14223607A2B00ED1A03 /* StationView.swift */; };
 		59F47E0A2351BDC7001F8C47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F47E092351BDC7001F8C47 /* AppDelegate.swift */; };
 		59F47E0C2351BDC7001F8C47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F47E0B2351BDC7001F8C47 /* SceneDelegate.swift */; };
 		59F47E102351BDC8001F8C47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59F47E0F2351BDC8001F8C47 /* Assets.xcassets */; };
 		59F47E132351BDC8001F8C47 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59F47E122351BDC8001F8C47 /* Preview Assets.xcassets */; };
 		59F47E162351BDC8001F8C47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F47E142351BDC8001F8C47 /* LaunchScreen.storyboard */; };
 		59F47E212351BDC8001F8C47 /* redETests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F47E202351BDC8001F8C47 /* redETests.swift */; };
-		59F47E2F2351BEF8001F8C47 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F47E2E2351BEF8001F8C47 /* MapViewController.swift */; };
-		59F47E322351BF6C001F8C47 /* ViewMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F47E312351BF6C001F8C47 /* ViewMap.swift */; };
-		59F47E342351C340001F8C47 /* ViewMapContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F47E332351C340001F8C47 /* ViewMapContainer.swift */; };
 		59F47E362351C712001F8C47 /* ViewMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F47E352351C712001F8C47 /* ViewMain.swift */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +38,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		590533A3235F09300005CA8B /* TrainStation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainStation.swift; sourceTree = "<group>"; };
+		590533A5235F09820005CA8B /* TrainStationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainStationManager.swift; sourceTree = "<group>"; };
+		590533A7235F0AB40005CA8B /* Schedule.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
+		590533AE235F0FD40005CA8B /* FabView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FabView.swift; sourceTree = "<group>"; };
+		590533B0235F100C0005CA8B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		590533B2235F115A0005CA8B /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		592AA0862361980200091ED1 /* ContactCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCard.swift; sourceTree = "<group>"; };
+		592AA0882361BA6600091ED1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		592AA0892361BA6600091ED1 /* ViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ViewController.xib; sourceTree = "<group>"; };
+		596CF14223607A2B00ED1A03 /* StationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationView.swift; sourceTree = "<group>"; };
 		59F47E062351BDC7001F8C47 /* redE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = redE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59F47E092351BDC7001F8C47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		59F47E0B2351BDC7001F8C47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -40,9 +58,6 @@
 		59F47E1C2351BDC8001F8C47 /* redETests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = redETests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		59F47E202351BDC8001F8C47 /* redETests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = redETests.swift; sourceTree = "<group>"; };
 		59F47E222351BDC8001F8C47 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		59F47E2E2351BEF8001F8C47 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
-		59F47E312351BF6C001F8C47 /* ViewMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMap.swift; sourceTree = "<group>"; };
-		59F47E332351C340001F8C47 /* ViewMapContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMapContainer.swift; sourceTree = "<group>"; };
 		59F47E352351C712001F8C47 /* ViewMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewMain.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -51,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				590533AD235F0D370005CA8B /* KeirmotUtils in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -64,6 +80,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		590533A9235F0AF40005CA8B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				590533A3235F09300005CA8B /* TrainStation.swift */,
+				590533A7235F0AB40005CA8B /* Schedule.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		590533AA235F0B0D0005CA8B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				590533A5235F09820005CA8B /* TrainStationManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
 		59F47DFD2351BDC7001F8C47 = {
 			isa = PBXGroup;
 			children = (
@@ -88,9 +121,13 @@
 			children = (
 				59F47E092351BDC7001F8C47 /* AppDelegate.swift */,
 				59F47E0B2351BDC7001F8C47 /* SceneDelegate.swift */,
-				59F47E2B2351BE10001F8C47 /* Views */,
+				590533B0235F100C0005CA8B /* Constants.swift */,
+				590533AA235F0B0D0005CA8B /* Managers */,
+				590533A9235F0AF40005CA8B /* Models */,
 				59F47E112351BDC8001F8C47 /* Preview Content */,
-				59F47E302351BF46001F8C47 /* Controllers */,
+				59F47E2B2351BE10001F8C47 /* Views */,
+				592AA0882361BA6600091ED1 /* ViewController.swift */,
+				592AA0892361BA6600091ED1 /* ViewController.xib */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -115,9 +152,11 @@
 		59F47E2B2351BE10001F8C47 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				59F47E312351BF6C001F8C47 /* ViewMap.swift */,
-				59F47E332351C340001F8C47 /* ViewMapContainer.swift */,
+				590533AE235F0FD40005CA8B /* FabView.swift */,
 				59F47E352351C712001F8C47 /* ViewMain.swift */,
+				590533B2235F115A0005CA8B /* SearchView.swift */,
+				596CF14223607A2B00ED1A03 /* StationView.swift */,
+				592AA0862361980200091ED1 /* ContactCard.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -140,14 +179,6 @@
 			path = redE;
 			sourceTree = "<group>";
 		};
-		59F47E302351BF46001F8C47 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				59F47E2E2351BEF8001F8C47 /* MapViewController.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,6 +195,9 @@
 			dependencies = (
 			);
 			name = redE;
+			packageProductDependencies = (
+				590533AC235F0D370005CA8B /* KeirmotUtils */,
+			);
 			productName = redE;
 			productReference = 59F47E062351BDC7001F8C47 /* redE.app */;
 			productType = "com.apple.product-type.application";
@@ -214,6 +248,9 @@
 				Base,
 			);
 			mainGroup = 59F47DFD2351BDC7001F8C47;
+			packageReferences = (
+				590533AB235F0D370005CA8B /* XCRemoteSwiftPackageReference "KeirmotUtils" */,
+			);
 			productRefGroup = 59F47E072351BDC7001F8C47 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -231,6 +268,7 @@
 			files = (
 				59F47E162351BDC8001F8C47 /* LaunchScreen.storyboard in Resources */,
 				59F47E132351BDC8001F8C47 /* Preview Assets.xcassets in Resources */,
+				592AA08B2361BA6600091ED1 /* ViewController.xib in Resources */,
 				59F47E102351BDC8001F8C47 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,12 +287,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				590533A8235F0AB40005CA8B /* Schedule.swift in Sources */,
+				590533B3235F115A0005CA8B /* SearchView.swift in Sources */,
 				59F47E0A2351BDC7001F8C47 /* AppDelegate.swift in Sources */,
-				59F47E342351C340001F8C47 /* ViewMapContainer.swift in Sources */,
+				590533A4235F09300005CA8B /* TrainStation.swift in Sources */,
+				592AA0872361980200091ED1 /* ContactCard.swift in Sources */,
 				59F47E0C2351BDC7001F8C47 /* SceneDelegate.swift in Sources */,
+				592AA08A2361BA6600091ED1 /* ViewController.swift in Sources */,
+				590533A6235F09820005CA8B /* TrainStationManager.swift in Sources */,
 				59F47E362351C712001F8C47 /* ViewMain.swift in Sources */,
-				59F47E322351BF6C001F8C47 /* ViewMap.swift in Sources */,
-				59F47E2F2351BEF8001F8C47 /* MapViewController.swift in Sources */,
+				590533AF235F0FD40005CA8B /* FabView.swift in Sources */,
+				590533B1235F100C0005CA8B /* Constants.swift in Sources */,
+				596CF14323607A2B00ED1A03 /* StationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,6 +561,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		590533AB235F0D370005CA8B /* XCRemoteSwiftPackageReference "KeirmotUtils" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/keirmot/KeirmotUtils.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		590533AC235F0D370005CA8B /* KeirmotUtils */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 590533AB235F0D370005CA8B /* XCRemoteSwiftPackageReference "KeirmotUtils" */;
+			productName = KeirmotUtils;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 59F47DFE2351BDC7001F8C47 /* Project object */;
 }

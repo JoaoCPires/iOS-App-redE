@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "GLOBAL">
+         <PersistentStrings>
+            <PersistentString
+               value = "TrainStationManager.allStations">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in static TrainStationManager.getStationDetail(fromBase:to:):TrainStationManager.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in static TrainStationManager.getAllStations():TrainStationManager.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #1 in static TrainStationManager.getStation(withName:to:):TrainStationManager.swift">
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>
