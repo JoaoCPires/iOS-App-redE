@@ -57,6 +57,7 @@ struct StationSearchScreen: View, TrainStationsManagerDelegate {
                             .padding(.trailing, 20)
                             .padding(.bottom, 16)
                     })
+                    .onTapGesture { UIImpactFeedbackGenerator(style: .heavy).impactOccurred() }
 
                     Spacer()
                 }

@@ -10,72 +10,79 @@ import SwiftUI
 import MapKit
 
 struct StationScreen: View, TrainStationManagerDelegate {
-
+    
     func trainStationManager(didSend trainsStation: BaseStation) {
-
+        
         station = trainsStation
         selectedSchedule = 0
     }
-
-
+    
+    
     @State var station: BaseStation
     @State private var selectedSchedule = 1
-
+    @State private var hideHeader = true
+    
     var body: some View {
-
+        
         ZStack {
-
+            
             VStack {
-
+                
                 MapView(coordenates: station.mapCoordinates)
                     .frame(height: 215)
                     .edgesIgnoringSafeArea(.top)
-
+                
                 Spacer()
             }
-
+            
             ScrollView {
-
+                
                 VStack {
-
-                    Spacer().frame(height: 215)
-
+                    
+                    GeometryReader { geometry -> Color in
+                        
+                        let frame = geometry.frame(in: .global)
+                        self.hideHeader = frame.maxY < 70 ? false : true
+                        return Color(.clear)
+                    }
+                    .frame(height: 215)
+                    
                     VStack(alignment: .leading) {
-
+                        
                         HeaderCard(station: $station)
-
+                        
                         if station.hasContacts {
-
+                            
                             Text("Contacts")
                                 .font(.callout)
                                 .padding(.leading, 20)
-
+                            
                             ScrollView(.horizontal, showsIndicators: false) {
-
+                                
                                 HStack{
-
+                                    
                                     Spacer().frame(width: 20, height: 20)
-
+                                    
                                     ForEach(station.contacts) { contact in
-
+                                        
                                         ContactCard(contactInfo: contact)
                                             .frame(minWidth: AppDimensions.screenWidth - 60, maxWidth: AppDimensions.screenWidth - 60, minHeight: AppDimensions.screenWidth - 60, maxHeight: .infinity)
                                             .shadow(color: Color(.systemGray), radius: 4, x: 2, y: 2)
                                             .onTapGesture {
-
+                                                
                                                 guard let number = URL(string: "tel://" + contact.callingNumber) else { return }
                                                 UIApplication.shared.open(number)
                                         }
                                     }
-
+                                    
                                     Spacer().frame(width: 20, height: 20)
                                 }
                                 .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 80)
                             }
-
+                            
                             Spacer()
                         }
-
+                        
                         Picker(selection: $selectedSchedule, label: Text("Arrivals or Departures")) {
                             Text("Partidas").tag(0)
                             Text("Chegadas").tag(1)
@@ -83,11 +90,11 @@ struct StationScreen: View, TrainStationManagerDelegate {
                         .padding(.leading, 20)
                         .padding(.trailing, 20)
                         .pickerStyle(SegmentedPickerStyle())
-
+                        
                         VStack{
-
+                            
                             ForEach(selectedSchedule == 0 ? station.departingScheduleDetails: station.arrivingScheduleDetails) { index in
-
+                                
                                 ScheduleCard(schedule: index, type: self.selectedSchedule == 0 ? .departure : .arrival)
                                     .background(Color(.systemBackground))
                                     .cornerRadius(10)
@@ -104,9 +111,33 @@ struct StationScreen: View, TrainStationManagerDelegate {
                 .edgesIgnoringSafeArea(.top)
             }
             .edgesIgnoringSafeArea(.top)
+            
+            VStack {
+                
+                VStack(alignment:.leading){
+                    Spacer()
+                    
+                    Text(station.stationName)
+                        .font(.title)
+                    
+                    Text(station.stationLine)
+                        .font(.caption)
+                        .padding(.top, 4)
+                        .padding(.bottom, 4)
+                }
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 150, maxHeight: 150, alignment: .leading)
+                .padding(.leading, 20)
+                .background(Color(.systemBackground))
+                .opacity(hideHeader ? 0 : 1)
+                .animation(.easeIn(duration: 0.15))
+                .edgesIgnoringSafeArea(.top)
+                .shadow(color: Color(.lightGray), radius: 2, x: 0, y: 2)
+                
+                Spacer()
+            }
         }
         .onAppear {
-
+            
             TrainStationManager.getStationDetails(for: self.station, to: self)
         }
     }
@@ -114,7 +145,7 @@ struct StationScreen: View, TrainStationManagerDelegate {
 
 struct StationView_Previews: PreviewProvider {
     static var previews: some View {
-
+        
         let details = TrainStation(
             name: "LISBOA-APOLÓNIA",
             horarioEstacao: nil,
@@ -142,37 +173,37 @@ struct StationView_Previews: PreviewProvider {
             cidadeProximaDistancia: nil,
             centroCidadeProximaDistancia: nil,
             pk: nil)
-
+        
         let origen = Comboio(id: 9430007, nome: "LISBOA-APOLÓNIA")
         let destino = Comboio(id: 9449007, nome: "GUARDA")
         let status = EstadoComboio(id: 2, nome: "À tabela", descricao: "À tabela")
-
+        
         let scheduleDetail = ScheduleDetail(id: 513, nome: "IC", horaChegada: "24-10-2019 12:30:00", horaPartida: "24-10-2019 12:30:00", comboio: nil, estacaoOrigem: origen, estacaoDestino: destino, operador: nil, estadoComboio: status)
-
+        
         let schedule = Schedule()
         schedule.scheduleDetail = [scheduleDetail,scheduleDetail,scheduleDetail,scheduleDetail,scheduleDetail,scheduleDetail]
-
+        
         let station = BaseStation(id: 9430007, name: "LISBOA-APOLÓNIA", details: details, arrivingSchedules: schedule, departingSchedules: schedule)
-
+        
         return StationScreen(station: station)
     }
 }
 
 struct MapView: UIViewRepresentable {
-
+    
     var coordenates: CLLocationCoordinate2D
-
+    
     func makeUIView(context: Context) -> MKMapView {
         MKMapView(frame: .zero)
     }
-
+    
     func updateUIView(_ view: MKMapView, context: Context) {
-
+        
         let span = MKCoordinateSpan(latitudeDelta: 0.0025, longitudeDelta: 0.0025)
         let region = MKCoordinateRegion(center: coordenates, span: span)
         view.setRegion(region, animated: true)
         view.isUserInteractionEnabled = false
-
+        
         let newPin = MKPointAnnotation()
         newPin.coordinate = coordenates
         view.addAnnotation(newPin)
@@ -180,15 +211,15 @@ struct MapView: UIViewRepresentable {
 }
 
 struct AmenetiesView: View {
-
+    
     var ameneties: [StationAmeneties]
-
+    
     var body: some View {
-
+        
         HStack {
-
+            
             ForEach(ameneties, id: \.self) { amenety in
-
+                
                 CircleImage(imageName: amenety.imageName, imageSize: 32)
             }
         }
@@ -196,20 +227,20 @@ struct AmenetiesView: View {
 }
 
 struct CircleImage: View {
-
+    
     var imageName: String
     var imageSize: CGFloat = 32
     private var iconSize: CGFloat {
         imageSize * 0.60
     }
     var body: some View {
-
+        
         ZStack {
-
+            
             Circle()
                 .foregroundColor(Color.blue)
                 .frame(width: imageSize, height: imageSize, alignment: .center)
-
+            
             Image(imageName)
                 .resizable()
                 .renderingMode(.template)
@@ -221,24 +252,26 @@ struct CircleImage: View {
 }
 
 struct HeaderCard: View {
-
+    
     @Binding var station: BaseStation
-
+    
     var body: some View {
         VStack(alignment: .leading) {
-
+            
             Text(station.stationName)
                 .font(.title)
-
+                .shadow(color: Color(.lightGray), radius: 2, x: 0, y: 2)
+            
             Text(station.stationLine)
                 .font(.caption)
                 .padding(.top, 4)
                 .padding(.bottom, 4)
-
+                .shadow(color: Color(.lightGray), radius: 2, x: 0, y: 2)
+            
             Text(station.stationAddress)
                 .lineLimit(2)
                 .font(.subheadline)
-
+            
             if station.hasAmeneties {
                 AmenetiesView(ameneties: station.ameneties)
                     .padding(.top, 4)

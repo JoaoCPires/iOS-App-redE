@@ -15,6 +15,7 @@ protocol TrainStationsManagerDelegate {
 }
 
 protocol TrainStationManagerDelegate {
+
     func trainStationManager(didSend trainsStation: BaseStation)
 }
 
@@ -28,7 +29,7 @@ class TrainStationManager {
     private static var allStations = TrainStations()
 
     // MARK: - Class Methods
-    class func getSavedStations(to delegate: TrainStationManagerDelegate) {
+    class func getSavedStations(to delegate: TrainStationsManagerDelegate) {
 
     }
 
