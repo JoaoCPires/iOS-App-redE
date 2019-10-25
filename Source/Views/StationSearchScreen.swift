@@ -15,7 +15,7 @@ struct StationSearchScreen: View, TrainStationsManagerDelegate {
         stations = trainsStations
     }
 
-    private let title = "Pesquisa"
+    private let title = "screen.title.search".localized
 
     @State var stations = [BaseStation]()
     @State var query = String()
@@ -30,7 +30,7 @@ struct StationSearchScreen: View, TrainStationsManagerDelegate {
 
                 Image(systemName: "magnifyingglass")
 
-                TextField("search", text: $query, onCommit: { TrainStationManager.getStations(withName: self.query, to: self) })
+                TextField("placeholder.search".localized, text: $query, onCommit: { TrainStationManager.getStations(withName: self.query, to: self) })
                     .foregroundColor(.primary)
                     .keyboardType(.alphabet)
                     .disableAutocorrection(true)
@@ -51,7 +51,7 @@ struct StationSearchScreen: View, TrainStationsManagerDelegate {
                     NavigationLink(destination: StationScreen(station: station), label: {
 
                         ViewStationRow(station: station)
-                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 77, maxHeight: 77, alignment: .leading)
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 80, maxHeight: 80, alignment: .leading)
                             .padding(.top, 8)
                             .padding(.leading, 20)
                             .padding(.trailing, 20)
@@ -70,71 +70,5 @@ struct StationSearchScreen: View, TrainStationsManagerDelegate {
 struct StationSearchScreen_Previews: PreviewProvider {
     static var previews: some View {
         StationSearchScreen()
-    }
-}
-
-struct ViewStationRow: View {
-
-    var station: BaseStation
-
-    var body: some View {
-
-        VStack(alignment: .leading) {
-
-            HStack {
-
-                Text(station.name.capitalized(with: Locale(identifier: "pt")))
-                    .font(.callout)
-
-                Circle()
-                    .frame(width: 10, height: 10, alignment: .trailing)
-                    .foregroundColor(colorForSchedule())
-
-                Spacer()
-
-            }
-
-
-            HStack {
-
-                if station.details?.hospitalNome != "" { CircleImage(imageName: "IconHospital") }
-                if station.details?.policiaNome != "" { CircleImage(imageName: "IconShield") }
-                if station.details?.bombeirosNome != "" { CircleImage(imageName: "IconFire") }
-                if station.details?.farmaciaNome != "" { CircleImage(imageName: "IconPharmacy") }
-                if station.details?.acessoMobilidadeReduzida != "Não" || station.details?.acessoMobilidadeReduzida != ""  { CircleImage(imageName: "IconAccessibility") }
-                if station.details?.estacionamentoBicicletas == "Sim" { CircleImage(imageName: "IconBicycle") }
-            }
-            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .leading)
-        }
-        .padding()
-        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 77, maxHeight: 77, alignment: .leading)
-        .background(Color(.systemBackground))
-        .cornerRadius(10, antialiased: true)
-        .shadow(color: Color(.lightGray), radius: 5, x: 2, y: 2)
-    }
-
-
-    // MARK: - Methods
-    private func colorForSchedule() -> Color {
-
-        var result = Color.green
-        var isDelayed = false
-        var isCanceled = false
-        for schedule in station.arrivingSchedules?.scheduleDetail ?? [] {
-
-            if schedule.estadoComboio?.nome?.contains("Atrasado") ?? false { isDelayed = true }
-            if schedule.estadoComboio?.nome?.contains("Cancelado") ?? false { isCanceled = true }
-            if schedule.estadoComboio?.nome?.contains("Suprimido") ?? false { isCanceled = true }
-        }
-        if isCanceled { result = .red }
-        else if isDelayed { result = .yellow }
-
-        return result
-    }
-
-    private func amenetiesForTrainStation() -> [Image] {
-
-        let result = [Image]()
-        return result
     }
 }

@@ -20,9 +20,9 @@ enum ScheduleStatus {
 
     var description: String {
         switch self {
-        case .delayed: return "Atrasado"
-        case .onTime: return "À Tabela"
-        case .canceled: return "Suprimido"
+        case .delayed: return "label.delayed".localized
+        case .onTime: return "label.on.time".localized
+        case .canceled: return "label.canceled".localized
         }
     }
 }
@@ -61,10 +61,10 @@ class ScheduleDetail: Codable, Identifiable {
 
         switch type {
         case .arrival:
-            return "Origem: \((estacaoOrigem?.nome ?? String()).capitalized(with: Locale(identifier: "pt")))"
+            return "\("label.origin".localized): \((estacaoOrigem?.nome ?? String()).capitalized(with: Locale(identifier: "pt")))"
 
         case .departure:
-            return "Destino: \((estacaoDestino?.nome ?? String()).capitalized(with: Locale(identifier: "pt")))"
+            return "\("label.destination".localized): \((estacaoDestino?.nome ?? String()).capitalized(with: Locale(identifier: "pt")))"
         }
     }
 
@@ -80,13 +80,13 @@ class ScheduleDetail: Codable, Identifiable {
             let date = dateFormatter.date(from: horaChegada!)!
             let components = calendar.dateComponents([.hour, .minute], from: date)
 
-            return ("Chegada: \(components.hour ?? 0):\(components.minute ?? 0)").capitalized(with: Locale(identifier: "pt"))
+            return ("\("label.arrival".localized): \(components.hour ?? 0):\(components.minute ?? 0)").capitalized(with: Locale(identifier: "pt"))
 
         case .departure:
             let date = dateFormatter.date(from: horaPartida!)!
             let components = calendar.dateComponents([.hour, .minute], from: date)
 
-            return ("Partida: \(components.hour ?? 0):\(components.minute ?? 0)").capitalized(with: Locale(identifier: "pt"))
+            return ("\("label.departure".localized): \(components.hour ?? 0):\(components.minute ?? 0)").capitalized(with: Locale(identifier: "pt"))
         }
     }
 

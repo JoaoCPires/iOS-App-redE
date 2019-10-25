@@ -42,15 +42,19 @@ extension Array where Element: TrainStation {
 }
 
 enum StationAmeneties {
+    case police
+    case firefighters
+    case hospital
     case bikeParking
     case reducedMobility
-    case pharmacy
 
     var imageName: String {
         switch self {
+        case .police: return  "IconShield"
+        case .firefighters: return "IconFire"
+        case .hospital: return  "IconHospital"
         case .bikeParking: return  "IconBicycle"
         case .reducedMobility: return "IconAccessibility"
-        case .pharmacy: return "IconPharmacy"
         }
     }
 }
@@ -99,6 +103,18 @@ class BaseStation: Codable, Identifiable {
     var ameneties: [StationAmeneties] {
 
         var result = [StationAmeneties]()
+        if details?.policiaNome != nil && details?.policiaNome != "" {
+
+            result.append(.police)
+        }
+        if details?.bombeirosNome != nil && details?.bombeirosNome != "" {
+
+            result.append(.firefighters)
+        }
+        if details?.hospitalNome != nil && details?.hospitalTelefone != "" {
+
+            result.append(.hospital)
+        }
         if details?.acessoMobilidadeReduzida != "" || details?.acessoMobilidadeReduzida != "Não" {
 
             result.append(.reducedMobility)
@@ -127,7 +143,13 @@ class BaseStation: Codable, Identifiable {
 
             let name = details?.bombeirosNome ?? String()
             let phoneNumber = details?.bombeirosTelefone ?? String()
-            result.append(Contact(imageName: "IconShield", title: name, phoneNumber: phoneNumber ))
+            result.append(Contact(imageName: "IconFire", title: name, phoneNumber: phoneNumber ))
+        }
+        if details?.hospitalNome != nil && details?.hospitalTelefone != "" {
+
+            let name = details?.hospitalNome ?? String()
+            let phoneNumber = details?.hospitalTelefone ?? String()
+            result.append(Contact(imageName: "IconHospital", title: name, phoneNumber: phoneNumber ))
         }
 
         return result

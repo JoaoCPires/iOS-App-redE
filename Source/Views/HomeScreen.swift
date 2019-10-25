@@ -17,7 +17,7 @@ struct ViewMain_Previews: PreviewProvider {
 
 struct HomeScreen: View, TrainStationsManagerDelegate {
 
-    private var title = "Estações"
+    private var title = "screen.title.stations".localized
 
     @State var savedStations: [BaseStation] = [BaseStation]()
 
@@ -42,7 +42,6 @@ struct HomeScreen: View, TrainStationsManagerDelegate {
                             .frame(width: 42, height: 42, alignment: .center)
                     })
                 )
-
             }
         }
         .onAppear {

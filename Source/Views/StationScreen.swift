@@ -10,182 +10,106 @@ import SwiftUI
 import MapKit
 
 struct StationScreen: View, TrainStationManagerDelegate {
-    
-    func trainStationManager(didSend trainsStation: BaseStation) {
-        
-        station = trainsStation
-        selectedSchedule = 0
-    }
-    
-    
     @State var station: BaseStation
     @State private var selectedSchedule = 1
     @State private var hideHeader = true
-    
+    @State private var title = ""
+
     var body: some View {
         
-        ZStack {
-            
+        ScrollView {
+
             VStack {
-                
-                MapView(coordenates: station.mapCoordinates)
-                    .frame(height: 215)
-                    .edgesIgnoringSafeArea(.top)
-                
-                Spacer()
-            }
-            
-            ScrollView {
-                
-                VStack {
-                    
-                    GeometryReader { geometry -> Color in
-                        
-                        let frame = geometry.frame(in: .global)
-                        self.hideHeader = frame.maxY < 70 ? false : true
-                        return Color(.clear)
-                    }
-                    .frame(height: 215)
-                    
-                    VStack(alignment: .leading) {
-                        
-                        HeaderCard(station: $station)
-                        
-                        if station.hasContacts {
-                            
-                            Text("Contacts")
-                                .font(.callout)
-                                .padding(.leading, 20)
-                            
-                            ScrollView(.horizontal, showsIndicators: false) {
-                                
-                                HStack{
-                                    
-                                    Spacer().frame(width: 20, height: 20)
-                                    
-                                    ForEach(station.contacts) { contact in
-                                        
-                                        ContactCard(contactInfo: contact)
-                                            .frame(minWidth: AppDimensions.screenWidth - 60, maxWidth: AppDimensions.screenWidth - 60, minHeight: AppDimensions.screenWidth - 60, maxHeight: .infinity)
-                                            .shadow(color: Color(.systemGray), radius: 4, x: 2, y: 2)
-                                            .onTapGesture {
-                                                
-                                                guard let number = URL(string: "tel://" + contact.callingNumber) else { return }
-                                                UIApplication.shared.open(number)
-                                        }
+                GeometryReader { geometry -> MapView in
+
+                    let coordenate = geometry.frame(in: .global).maxY
+                    self.title = coordenate < 20 ? self.station.stationName : ""
+                    return MapView(coordenates: self.station.mapCoordinates)
+                }
+                .frame(height: 215)
+                .edgesIgnoringSafeArea(.top)
+
+                VStack(alignment: .leading) {
+
+                    HeaderCard(station: $station)
+
+                    if station.hasContacts {
+
+                        Text("label.contacts".localized)
+                            .font(.callout)
+                            .padding(.leading, 20)
+
+                        ScrollView(.horizontal, showsIndicators: false) {
+
+                            HStack{
+
+                                Spacer().frame(width: 20, height: 20)
+
+                                ForEach(station.contacts) { contact in
+
+                                    ContactCard(contactInfo: contact)
+                                        .frame(minWidth: AppDimensions.screenWidth - 60, maxWidth: AppDimensions.screenWidth - 60, minHeight: AppDimensions.screenWidth - 60, maxHeight: .infinity)
+                                        .shadow(color: Color(.systemGray), radius: 4, x: 2, y: 2)
+                                        .onTapGesture {
+
+                                            guard let number = URL(string: "tel://" + contact.callingNumber) else { return }
+                                            UIApplication.shared.open(number)
                                     }
-                                    
-                                    Spacer().frame(width: 20, height: 20)
                                 }
-                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 80)
+
+                                Spacer().frame(width: 20, height: 20)
                             }
-                            
-                            Spacer()
+                            .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: 80)
                         }
-                        
-                        Picker(selection: $selectedSchedule, label: Text("Arrivals or Departures")) {
-                            Text("Partidas").tag(0)
-                            Text("Chegadas").tag(1)
-                        }
-                        .padding(.leading, 20)
-                        .padding(.trailing, 20)
-                        .pickerStyle(SegmentedPickerStyle())
-                        
-                        VStack{
-                            
-                            ForEach(selectedSchedule == 0 ? station.departingScheduleDetails: station.arrivingScheduleDetails) { index in
-                                
-                                ScheduleCard(schedule: index, type: self.selectedSchedule == 0 ? .departure : .arrival)
-                                    .background(Color(.systemBackground))
-                                    .cornerRadius(10)
-                                    .shadow(color: Color(.systemGray), radius: 4, x: 2, y: 2)
-                            }
-                        }
-                        .padding(.top, 8)
-                        .padding(.leading, 20)
-                        .padding(.trailing, 20)
+
+                        Spacer()
                     }
-                    .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
-                    .background(Color(.systemBackground))
+
+                    Picker(selection: $selectedSchedule, label: Text("accessibilty.arrivals.departures".localized)) {
+                        Text("label.departures".localized).tag(0)
+                        Text("label.arrivals".localized).tag(1)
+                    }
+                    .padding(.leading, 20)
+                    .padding(.trailing, 20)
+                    .pickerStyle(SegmentedPickerStyle())
+
+                    VStack{
+
+                        ForEach(selectedSchedule == 0 ? station.departingScheduleDetails: station.arrivingScheduleDetails) { index in
+
+                            ScheduleCard(schedule: index, type: self.selectedSchedule == 0 ? .departure : .arrival)
+                                .background(Color(.systemBackground))
+                                .cornerRadius(10)
+                                .shadow(color: Color(.systemGray), radius: 4, x: 2, y: 2)
+                        }
+                    }
+                    .padding(.top, 8)
+                    .padding(.leading, 20)
+                    .padding(.trailing, 20)
                 }
-                .edgesIgnoringSafeArea(.top)
-            }
-            .edgesIgnoringSafeArea(.top)
-            
-            VStack {
-                
-                VStack(alignment:.leading){
-                    Spacer()
-                    
-                    Text(station.stationName)
-                        .font(.title)
-                    
-                    Text(station.stationLine)
-                        .font(.caption)
-                        .padding(.top, 4)
-                        .padding(.bottom, 4)
-                }
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 150, maxHeight: 150, alignment: .leading)
-                .padding(.leading, 20)
+                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .topLeading)
                 .background(Color(.systemBackground))
-                .opacity(hideHeader ? 0 : 1)
-                .animation(.easeIn(duration: 0.15))
-                .edgesIgnoringSafeArea(.top)
-                .shadow(color: Color(.lightGray), radius: 2, x: 0, y: 2)
-                
-                Spacer()
             }
         }
+        .navigationBarTitle(Text(title), displayMode: .inline)
         .onAppear {
-            
+
             TrainStationManager.getStationDetails(for: self.station, to: self)
         }
     }
+
+    func trainStationManager(didSend trainsStation: BaseStation) {
+
+        station = trainsStation
+        selectedSchedule = 0
+    }
+
 }
 
 struct StationView_Previews: PreviewProvider {
     static var previews: some View {
-        
-        let details = TrainStation(
-            name: "LISBOA-APOLÓNIA",
-            horarioEstacao: nil,
-            morada: "Largo dos Caminhos de Ferro - Estação de Santa Apolónia, Lisboa",
-            acessoMobilidadeReduzida: "Sim",
-            aeroportoNome: nil,
-            aeroportoDistancia: nil,
-            farmaciaNome: nil,
-            farmaciaDistancia: nil,
-            bombeirosNome: "Regimento Sapadores Bombeiros de Lisboa",
-            bombeirosTelefone: "808 215 215",
-            policiaNome: "4ª Esquadra de Segurança a Transportes Públicos",
-            policiaTelefone: "218 946 046",
-            hospitalNome: "Hospital de Santa Maria",
-            hospitalTelefone: "217 805 000",
-            coordenadas: "lat=41.547843270000001 ; long=-8.4346801609999993",
-            nodeID: nil,
-            linha: "Linha de Sintra",
-            anoContrucao: nil,
-            epClassificadoInteresse: nil,
-            telefone: "218 841 000",
-            equipamentomobilidadeReduzidaPlataformas: nil,
-            estacionamentoBicicletas: "Sim",
-            cidadeProxima: nil,
-            cidadeProximaDistancia: nil,
-            centroCidadeProximaDistancia: nil,
-            pk: nil)
-        
-        let origen = Comboio(id: 9430007, nome: "LISBOA-APOLÓNIA")
-        let destino = Comboio(id: 9449007, nome: "GUARDA")
-        let status = EstadoComboio(id: 2, nome: "À tabela", descricao: "À tabela")
-        
-        let scheduleDetail = ScheduleDetail(id: 513, nome: "IC", horaChegada: "24-10-2019 12:30:00", horaPartida: "24-10-2019 12:30:00", comboio: nil, estacaoOrigem: origen, estacaoDestino: destino, operador: nil, estadoComboio: status)
-        
-        let schedule = Schedule()
-        schedule.scheduleDetail = [scheduleDetail,scheduleDetail,scheduleDetail,scheduleDetail,scheduleDetail,scheduleDetail]
-        
-        let station = BaseStation(id: 9430007, name: "LISBOA-APOLÓNIA", details: details, arrivingSchedules: schedule, departingSchedules: schedule)
-        
-        return StationScreen(station: station)
+
+        return StationScreen(station: PreviewObject.station)
     }
 }
 
@@ -260,14 +184,12 @@ struct HeaderCard: View {
             
             Text(station.stationName)
                 .font(.title)
-                .shadow(color: Color(.lightGray), radius: 2, x: 0, y: 2)
-            
+
             Text(station.stationLine)
                 .font(.caption)
                 .padding(.top, 4)
                 .padding(.bottom, 4)
-                .shadow(color: Color(.lightGray), radius: 2, x: 0, y: 2)
-            
+
             Text(station.stationAddress)
                 .lineLimit(2)
                 .font(.subheadline)
