@@ -77,12 +77,18 @@ struct Contact: Identifiable {
     }
 }
 
-class BaseStation: Codable, Identifiable {
+class BaseStation: Codable, Identifiable, Hashable, Equatable {
     let id: Int
     let name: String
     var details: TrainStation!
     var arrivingSchedules: Schedule!
     var departingSchedules: Schedule!
+    var isInPersistence: Bool?
+
+    var isSaved: Bool {
+
+        return isInPersistence ?? false
+    }
 
     // MARK: - Computed Properties
     var stationName: String { (details.name ?? String()).capitalized(with: Locale(identifier: "pt")) }
@@ -168,6 +174,15 @@ class BaseStation: Codable, Identifiable {
         self.details = details
         self.arrivingSchedules = arrivingSchedules
         self.departingSchedules = departingSchedules
+    }
+
+    static func == (lhs: BaseStation, rhs: BaseStation) -> Bool {
+        lhs.id == rhs.id
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(name)
     }
 
 }

@@ -11,8 +11,9 @@ import MapKit
 
 struct StationScreen: View, TrainStationManagerDelegate {
     @State var station: BaseStation
-    @State private var selectedSchedule = 1
+    @State private var selectedSchedule = 0
     @State private var hideHeader = true
+    @State private var isSaved = false
     @State private var title = ""
 
     var body: some View {
@@ -92,15 +93,33 @@ struct StationScreen: View, TrainStationManagerDelegate {
             }
         }
         .navigationBarTitle(Text(title), displayMode: .inline)
-        .onAppear {
+        .navigationBarItems(trailing:
+            Button(action: {
 
-            TrainStationManager.getStationDetails(for: self.station, to: self)
+                self.isSaved.toggle()
+                if self.isSaved {
+
+                    TrainStationManager.saveStation(self.station)
+                }
+                else {
+
+                    TrainStationManager.removeStation(self.station)
+                }
+            }, label: { isSaved ? Image(systemName: "star.fill") : Image(systemName: "star") })
+        )
+        .onAppear {
+            self.isSaved = self.station.isSaved
+            DispatchQueue.global().async {
+
+                TrainStationManager.getStationDetails(for: self.station, to: self)
+            }
         }
     }
 
     func trainStationManager(didSend trainsStation: BaseStation) {
 
         station = trainsStation
+        isSaved = station.isSaved
         selectedSchedule = 0
     }
 

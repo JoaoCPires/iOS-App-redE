@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import KeirmotUtils
 
 struct ViewMain_Previews: PreviewProvider {
     static var previews: some View {
@@ -16,42 +17,70 @@ struct ViewMain_Previews: PreviewProvider {
 
 
 struct HomeScreen: View, TrainStationsManagerDelegate {
+    @State var savedStations: [BaseStation] = [BaseStation]()
+    @State private var hasSavedStations = false
 
     private var title = "screen.title.stations".localized
-
-    @State var savedStations: [BaseStation] = [BaseStation]()
 
     var body: some View {
 
         NavigationView {
-            ScrollView {
-                ForEach(savedStations) { station in
+            if hasSavedStations {
+                ScrollView {
+                    ForEach(savedStations) { station in
+                        NavigationLink(destination: StationScreen(station: station), label: {
 
-                    ViewStationRow(station: station)
-                        .frame(minWidth: 0, maxWidth: .infinity, minHeight: 77, maxHeight: 77, alignment: .leading)
-                        .padding(.top, 8)
-                        .padding(.leading, 20)
-                        .padding(.trailing, 20)
-                        .padding(.bottom, 16)
+                            ViewStationRow(station: station)
+                                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 77, maxHeight: 77, alignment: .leading)
+                                .padding(.top, 8)
+                                .padding(.leading, 20)
+                                .padding(.trailing, 20)
+                                .padding(.bottom, 16)
+                        })
+                    }
+                    .navigationBarTitle(title)
+                    .navigationBarItems(trailing:
+                        NavigationLink(destination: StationSearchScreen(stations: []), label: {
+
+                            Image(systemName: "magnifyingglass")
+                                .frame(width: 42, height: 42, alignment: .center)
+                        })
+                    )
                 }
-                .navigationBarTitle(title)
-                .navigationBarItems(trailing:
-                    NavigationLink(destination: StationSearchScreen(stations: [], addToFavorites: true), label: {
+                .onAppear {
+                    DispatchQueue.global().async {
 
-                        Image(systemName: "plus")
-                            .frame(width: 42, height: 42, alignment: .center)
-                    })
-                )
+                        TrainStationManager.getSavedStations(to: self)
+                    }
+                }
             }
-        }
-        .onAppear {
-            TrainStationManager.getSavedStations(to: self)
+            if !hasSavedStations {
+                Text("label.add.stations".localized)
+                    .foregroundColor(Color.gray)
+                    .navigationBarTitle(title)
+                    .navigationBarItems(trailing:
+                        NavigationLink(destination: StationSearchScreen(stations: []), label: {
+
+                            Image(systemName: "magnifyingglass")
+                                .frame(width: 42, height: 42, alignment: .center)
+                        })
+                )
+
+                    .onAppear {
+                        DispatchQueue.global().async {
+
+                            TrainStationManager.getSavedStations(to: self)
+                        }
+                }
+            }
         }
     }
 
     // MARK: - Delegates
     func trainStationManager(didSend trainsStations: [BaseStation]) {
 
+        hasSavedStations = trainsStations.count > 0
+        savedStations = trainsStations
     }
 
 }

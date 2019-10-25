@@ -8,13 +8,22 @@
             <PersistentString
                value = "TrainStationManager.allStations">
             </PersistentString>
+            <PersistentString
+               value = "TrainStationManager.savedStations">
+            </PersistentString>
          </PersistentStrings>
       </ContextState>
       <ContextState
          contextName = "closure #1 in static TrainStationManager.getStationDetail(fromBase:to:):TrainStationManager.swift">
       </ContextState>
       <ContextState
+         contextName = "static TrainStationManager.saveStation(_:):TrainStationManager.swift">
+      </ContextState>
+      <ContextState
          contextName = "closure #1 in static TrainStationManager.getAllStations():TrainStationManager.swift">
+      </ContextState>
+      <ContextState
+         contextName = "closure #3 in StationScreen.body.getter:StationScreen.swift">
       </ContextState>
       <ContextState
          contextName = "closure #1 in static TrainStationManager.getStation(withName:to:):TrainStationManager.swift">

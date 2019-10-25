@@ -27,11 +27,50 @@ class TrainStationManager {
     private static let stationDetailEndPoint = "https://keirmot.github.io/apis/rede-app.json"
 
     private static var allStations = TrainStations()
+    private static var savedStations = [BaseStation]()
 
     // MARK: - Class Methods
     class func getSavedStations(to delegate: TrainStationsManagerDelegate) {
 
+        if savedStations.count == 0 {
+
+            savedStations = Storage.retrieve("SavedStations.rede", from: .caches, as: [BaseStation].self) ?? []
+        }
+        savedStations.forEach({ $0.isInPersistence = true })
+        delegate.trainStationManager(didSend: savedStations)
+        for station in savedStations {
+
+            station.details = detailsFor(stationWithId: String( station.id ))
+            station.arrivingSchedules = getStationSchedulesFor(scheduleType: .arrival ,stationWithId: String(station.id))
+            station.departingSchedules = getStationSchedulesFor(scheduleType: .departure ,stationWithId: String(station.id))
+        }
+        delegate.trainStationManager(didSend: savedStations)
     }
+
+    class func saveStation(_ station: BaseStation) {
+
+        if !savedStations.contains(station) {
+
+            savedStations.append(station)
+            station.isInPersistence = true
+        }
+        Storage.store(savedStations, to: .caches, as: "SavedStations.rede")
+    }
+
+    class func removeStation(_ station: BaseStation) {
+
+        for i in 0..<savedStations.count {
+
+            if savedStations[i] == station {
+
+                savedStations.remove(at: i)
+                station.isInPersistence = false
+                break
+            }
+        }
+        Storage.store(savedStations, to: .caches, as: "SavedStations.rede")
+    }
+
 
     class func getAllStations() {
 
@@ -96,12 +135,12 @@ class TrainStationManager {
         station.details = detailsFor(stationWithId: String( station.id ))
         station.arrivingSchedules = getStationSchedulesFor(scheduleType: .arrival ,stationWithId: String(station.id))
         station.departingSchedules = getStationSchedulesFor(scheduleType: .departure ,stationWithId: String(station.id))
+        station.isInPersistence = savedStations.contains(station)
         DispatchQueue.main.async {
 
             delegate.trainStationManager(didSend: station)
         }
     }
-
 
     class func getStationSchedulesFor(scheduleType: ScheduleType, stationWithId stationId: String) -> Schedule {
 

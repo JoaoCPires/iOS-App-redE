@@ -85,8 +85,10 @@ class ScheduleDetail: Codable, Identifiable {
         case .departure:
             let date = dateFormatter.date(from: horaPartida!)!
             let components = calendar.dateComponents([.hour, .minute], from: date)
+            let hour = ((components.hour ?? 0) < 10) ? "0\((components.hour ?? 0))" : "\(components.hour ?? 0)"
+            let minute = ((components.minute ?? 0) < 10) ? "0\((components.minute ?? 0))" : "\(components.minute ?? 0)"
 
-            return ("\("label.departure".localized): \(components.hour ?? 0):\(components.minute ?? 0)").capitalized(with: Locale(identifier: "pt"))
+            return ("\("label.departure".localized): \(hour):\(minute)").capitalized(with: Locale(identifier: "pt"))
         }
     }
 

@@ -11,7 +11,7 @@ screen.title.stations = "Estações";
 screen.title.search = "Pesquisa";
 
 // MARK: - Placeholders
-placeholder.search = "Pesquisar nome de estaçã0";
+placeholder.search = "Pesquisar nome de estação";
 
 // MARK: - Labels
 label.contacts = "Contactos";
@@ -24,6 +24,7 @@ label.origin = "Origem";
 label.on.time = "À tabela";
 label.delayed = "Atrasado";
 label.canceled = "Cancelado";
+label.add.stations = "Procure por uma estação e salve precionando ⭐️";
 
 // MARK: - Accessibilty
 accessibilty.arrivals.departures = "Partidas e Chegadas";
