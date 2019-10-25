@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "KeirmotUtils",
+        "repositoryURL": "https://github.com/keirmot/KeirmotUtils.git",
+        "state": {
+          "branch": null,
+          "revision": "1c096eb5ad40c3c1a33950b9eb9ad2e36251ef7f",
+          "version": "1.0.6"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

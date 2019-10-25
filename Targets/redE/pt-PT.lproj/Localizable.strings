@@ -1,0 +1,30 @@
+/* 
+  Localizable.strings
+  redE
+
+  Created by Joao Pires on 25/10/2019.
+  Copyright © 2019 Joao Pires. All rights reserved.
+*/
+
+// MARK: - Titles
+screen.title.stations = "Estações";
+screen.title.search = "Pesquisa";
+
+// MARK: - Placeholders
+placeholder.search = "Pesquisar nome de estação";
+
+// MARK: - labels
+label.contacts = "Contactos";
+label.departures = "Partidas";
+label.departure = "Partida";
+label.arrivals = "Chegadas";
+label.arrival = "Chegada";
+label.destination = "Destino";
+label.origin = "Origem";
+label.on.time = "À tabela";
+label.delayed = "Atrasado";
+label.canceled = "Cancelado";
+label.add.stations = "Procure por uma estação e salve precionando ⭐️";
+
+// MARK: - Accessibilty
+accessibilty.arrivals.departures = "Partidas e Chegadas";
