@@ -18,10 +18,19 @@
 		59767FEE2362259300D5BCE1 /* StationSearchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59767FED2362259300D5BCE1 /* StationSearchScreen.swift */; };
 		59767FF0236238FF00D5BCE1 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59767FEF236238FF00D5BCE1 /* HomeScreen.swift */; };
 		59B9C2B02362DEA80019ABEB /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B9C2AF2362DEA80019ABEB /* NavigationConfigurator.swift */; };
+		59CCF90023CE13E9001F8B04 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CCF8FE23CE13E9001F8B04 /* HomeViewController.swift */; };
+		59CCF90123CE13E9001F8B04 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59CCF8FF23CE13E9001F8B04 /* HomeViewController.xib */; };
+		59CCF90523CE1A5B001F8B04 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CCF90323CE1A5B001F8B04 /* SearchViewController.swift */; };
+		59CCF90623CE1A5B001F8B04 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59CCF90423CE1A5B001F8B04 /* SearchViewController.xib */; };
+		59CCF90923CE1DA1001F8B04 /* TrainStationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CCF90723CE1DA1001F8B04 /* TrainStationTableViewCell.swift */; };
+		59CCF90A23CE1DA1001F8B04 /* TrainStationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59CCF90823CE1DA1001F8B04 /* TrainStationTableViewCell.xib */; };
+		59CCF90E23CE22F2001F8B04 /* StationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CCF90C23CE22F2001F8B04 /* StationViewController.swift */; };
+		59CCF90F23CE22F2001F8B04 /* StationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59CCF90D23CE22F2001F8B04 /* StationViewController.xib */; };
+		59CCF91223CE456C001F8B04 /* HeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CCF91023CE456C001F8B04 /* HeaderTableViewCell.swift */; };
+		59CCF91323CE456C001F8B04 /* HeaderTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59CCF91123CE456C001F8B04 /* HeaderTableViewCell.xib */; };
 		59E13A0B23630D8C003C4E54 /* ViewStationRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59E13A0A23630D8C003C4E54 /* ViewStationRow.swift */; };
 		59E13A0E23631183003C4E54 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 59E13A1023631183003C4E54 /* Localizable.strings */; };
 		59F47E0A2351BDC7001F8C47 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F47E092351BDC7001F8C47 /* AppDelegate.swift */; };
-		59F47E0C2351BDC7001F8C47 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59F47E0B2351BDC7001F8C47 /* SceneDelegate.swift */; };
 		59F47E102351BDC8001F8C47 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59F47E0F2351BDC8001F8C47 /* Assets.xcassets */; };
 		59F47E132351BDC8001F8C47 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 59F47E122351BDC8001F8C47 /* Preview Assets.xcassets */; };
 		59F47E162351BDC8001F8C47 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 59F47E142351BDC8001F8C47 /* LaunchScreen.storyboard */; };
@@ -49,13 +58,22 @@
 		59767FED2362259300D5BCE1 /* StationSearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSearchScreen.swift; sourceTree = "<group>"; };
 		59767FEF236238FF00D5BCE1 /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
 		59B9C2AF2362DEA80019ABEB /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
+		59CCF8FE23CE13E9001F8B04 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		59CCF8FF23CE13E9001F8B04 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
+		59CCF90323CE1A5B001F8B04 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		59CCF90423CE1A5B001F8B04 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		59CCF90723CE1DA1001F8B04 /* TrainStationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainStationTableViewCell.swift; sourceTree = "<group>"; };
+		59CCF90823CE1DA1001F8B04 /* TrainStationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TrainStationTableViewCell.xib; sourceTree = "<group>"; };
+		59CCF90C23CE22F2001F8B04 /* StationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationViewController.swift; sourceTree = "<group>"; };
+		59CCF90D23CE22F2001F8B04 /* StationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationViewController.xib; sourceTree = "<group>"; };
+		59CCF91023CE456C001F8B04 /* HeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTableViewCell.swift; sourceTree = "<group>"; };
+		59CCF91123CE456C001F8B04 /* HeaderTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderTableViewCell.xib; sourceTree = "<group>"; };
 		59E13A0A23630D8C003C4E54 /* ViewStationRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewStationRow.swift; sourceTree = "<group>"; };
 		59E13A0F23631183003C4E54 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		59E13A11236311A2003C4E54 /* pt-PT */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-PT"; path = "pt-PT.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		59E13A12236311AA003C4E54 /* pt-BR */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "pt-BR"; path = "pt-BR.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		59F47E062351BDC7001F8C47 /* redE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = redE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59F47E092351BDC7001F8C47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		59F47E0B2351BDC7001F8C47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		59F47E0F2351BDC8001F8C47 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		59F47E122351BDC8001F8C47 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		59F47E152351BDC8001F8C47 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -101,6 +119,30 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		59CCF90223CE13EE001F8B04 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				59CCF8FE23CE13E9001F8B04 /* HomeViewController.swift */,
+				59CCF8FF23CE13E9001F8B04 /* HomeViewController.xib */,
+				59CCF90323CE1A5B001F8B04 /* SearchViewController.swift */,
+				59CCF90423CE1A5B001F8B04 /* SearchViewController.xib */,
+				59CCF90C23CE22F2001F8B04 /* StationViewController.swift */,
+				59CCF90D23CE22F2001F8B04 /* StationViewController.xib */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		59CCF90B23CE1DA7001F8B04 /* TableViewCells */ = {
+			isa = PBXGroup;
+			children = (
+				59CCF90723CE1DA1001F8B04 /* TrainStationTableViewCell.swift */,
+				59CCF90823CE1DA1001F8B04 /* TrainStationTableViewCell.xib */,
+				59CCF91023CE456C001F8B04 /* HeaderTableViewCell.swift */,
+				59CCF91123CE456C001F8B04 /* HeaderTableViewCell.xib */,
+			);
+			path = TableViewCells;
+			sourceTree = "<group>";
+		};
 		59F47DFD2351BDC7001F8C47 = {
 			isa = PBXGroup;
 			children = (
@@ -124,12 +166,13 @@
 			isa = PBXGroup;
 			children = (
 				59F47E092351BDC7001F8C47 /* AppDelegate.swift */,
-				59F47E0B2351BDC7001F8C47 /* SceneDelegate.swift */,
 				590533B0235F100C0005CA8B /* Constants.swift */,
 				590533AA235F0B0D0005CA8B /* Managers */,
 				590533A9235F0AF40005CA8B /* Models */,
 				59F47E112351BDC8001F8C47 /* Preview Content */,
 				59F47E2B2351BE10001F8C47 /* Views */,
+				59CCF90223CE13EE001F8B04 /* ViewControllers */,
+				59CCF90B23CE1DA7001F8B04 /* TableViewCells */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -274,7 +317,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				59F47E162351BDC8001F8C47 /* LaunchScreen.storyboard in Resources */,
+				59CCF91323CE456C001F8B04 /* HeaderTableViewCell.xib in Resources */,
+				59CCF90A23CE1DA1001F8B04 /* TrainStationTableViewCell.xib in Resources */,
 				59E13A0E23631183003C4E54 /* Localizable.strings in Resources */,
+				59CCF90F23CE22F2001F8B04 /* StationViewController.xib in Resources */,
+				59CCF90623CE1A5B001F8B04 /* SearchViewController.xib in Resources */,
+				59CCF90123CE13E9001F8B04 /* HomeViewController.xib in Resources */,
 				59F47E132351BDC8001F8C47 /* Preview Assets.xcassets in Resources */,
 				59F47E102351BDC8001F8C47 /* Assets.xcassets in Resources */,
 			);
@@ -299,12 +347,16 @@
 				590533A4235F09300005CA8B /* TrainStation.swift in Sources */,
 				592AA0872361980200091ED1 /* ContactCard.swift in Sources */,
 				59767FEE2362259300D5BCE1 /* StationSearchScreen.swift in Sources */,
-				59F47E0C2351BDC7001F8C47 /* SceneDelegate.swift in Sources */,
+				59CCF90023CE13E9001F8B04 /* HomeViewController.swift in Sources */,
 				590533A6235F09820005CA8B /* TrainStationManager.swift in Sources */,
+				59CCF90E23CE22F2001F8B04 /* StationViewController.swift in Sources */,
 				59767FF0236238FF00D5BCE1 /* HomeScreen.swift in Sources */,
+				59CCF90523CE1A5B001F8B04 /* SearchViewController.swift in Sources */,
 				592AA08D2361C28C00091ED1 /* ScheduleCard.swift in Sources */,
+				59CCF90923CE1DA1001F8B04 /* TrainStationTableViewCell.swift in Sources */,
 				59E13A0B23630D8C003C4E54 /* ViewStationRow.swift in Sources */,
 				590533B1235F100C0005CA8B /* Constants.swift in Sources */,
+				59CCF91223CE456C001F8B04 /* HeaderTableViewCell.swift in Sources */,
 				59B9C2B02362DEA80019ABEB /* NavigationConfigurator.swift in Sources */,
 				596CF14323607A2B00ED1A03 /* StationScreen.swift in Sources */,
 			);
@@ -471,7 +523,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Source/Preview Content\"";
 				DEVELOPMENT_TEAM = GE86H7RNX5;
 				ENABLE_PREVIEWS = YES;
@@ -480,7 +532,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2019.4;
+				MARKETING_VERSION = 2019.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.keirmot.redE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -493,7 +545,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Source/Preview Content\"";
 				DEVELOPMENT_TEAM = GE86H7RNX5;
 				ENABLE_PREVIEWS = YES;
@@ -502,7 +554,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2019.4;
+				MARKETING_VERSION = 2019.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.keirmot.redE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
