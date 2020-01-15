@@ -38,6 +38,7 @@ class StationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupNavigationBar()
         setupConstants()
         setupTableView()
         setupMapViewRegion()
@@ -45,6 +46,13 @@ class StationViewController: UIViewController {
     }
     
     //MARK: - Setup
+    private func setupNavigationBar() {
+        
+        let imageName = trainStation.isSaved ? "star.fill" : "star"
+        let searchButton =  UIBarButtonItem(image: UIImage(systemName: imageName), style: .plain, target: self, action: #selector(didTapSave))
+        navigationItem.rightBarButtonItem = searchButton
+    }
+
     private func setupConstants() {
         
         let window = UIApplication.shared.windows.first
@@ -76,6 +84,22 @@ class StationViewController: UIViewController {
         let newPin = MKPointAnnotation()
         newPin.coordinate = trainStation.mapCoordinates
         mapView.addAnnotation(newPin)
+    }
+    
+    //MARK: - Methods
+    @objc
+    private func didTapSave() {
+        if trainStation.isSaved {
+            
+            TrainStationManager.removeStation(trainStation)
+        }
+        else {
+       
+            TrainStationManager.saveStation(trainStation)
+        }
+        let imageName = trainStation.isSaved ? "star.fill" : "star"
+        let searchButton =  UIBarButtonItem(image: UIImage(systemName: imageName), style: .plain, target: self, action: #selector(didTapSave))
+        navigationItem.rightBarButtonItem = searchButton
     }
 }
 

@@ -32,19 +32,24 @@ class TrainStationManager {
     // MARK: - Class Methods
     class func getSavedStations(to delegate: TrainStationsManagerDelegate) {
 
-        if savedStations.count == 0 {
+        DispatchQueue.global().async {
+            if savedStations.count == 0 {
 
-            savedStations = Storage.retrieve("SavedStations.rede", from: .caches, as: [BaseStation].self) ?? []
-        }
-        savedStations.forEach({ $0.isInPersistence = true })
-        delegate.trainStationManager(didSend: savedStations)
-        for station in savedStations {
+                savedStations = Storage.retrieve("SavedStations.rede", from: .caches, as: [BaseStation].self) ?? []
+            }
+            savedStations.forEach({ $0.isInPersistence = true })
+            delegate.trainStationManager(didSend: savedStations)
+            for station in savedStations {
 
-            station.details = detailsFor(stationWithId: String( station.id ))
-            station.arrivingSchedules = getStationSchedulesFor(scheduleType: .arrival ,stationWithId: String(station.id))
-            station.departingSchedules = getStationSchedulesFor(scheduleType: .departure ,stationWithId: String(station.id))
+                station.details = detailsFor(stationWithId: String( station.id ))
+                station.arrivingSchedules = getStationSchedulesFor(scheduleType: .arrival ,stationWithId: String(station.id))
+                station.departingSchedules = getStationSchedulesFor(scheduleType: .departure ,stationWithId: String(station.id))
+            }
+            DispatchQueue.main.async {
+                        
+                delegate.trainStationManager(didSend: savedStations)
+            }
         }
-        delegate.trainStationManager(didSend: savedStations)
     }
 
     class func saveStation(_ station: BaseStation) {

@@ -32,6 +32,12 @@ class HomeViewController: UIViewController {
         super.viewDidLoad()
         
         setupNavigationBar()
+        setupTableView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         TrainStationManager.getSavedStations(to: self)
     }
     
@@ -42,6 +48,13 @@ class HomeViewController: UIViewController {
         navigationItem.rightBarButtonItem = searchButton
     }
     
+    private func setupTableView() {
+        
+        tableView.delegate = self
+        tableView.dataSource = self
+        tableView.registerForCell(TrainStationTableViewCell.identifier)
+    }
+    
     //MARK: - Actions
     @objc func didTapSearch() {
         
@@ -49,11 +62,37 @@ class HomeViewController: UIViewController {
     }
 }
 
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        trainStations.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: TrainStationTableViewCell.identifier,
+            for: indexPath) as! TrainStationTableViewCell
+        cell.setup(with: trainStations[indexPath.item])
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedStation = trainStations[indexPath.item]
+        navigationController?.pushViewController(StationViewController(withStation: selectedStation), animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+
+}
+
 extension HomeViewController: TrainStationsManagerDelegate {
     
     func trainStationManager(didSend trainsStations: [BaseStation]) {
         
         self.trainStations = trainsStations
+        tableView.reloadData()
     }
 
 }
