@@ -38,7 +38,10 @@ class TrainStationManager {
                 savedStations = Storage.retrieve("SavedStations.rede", from: .caches, as: [BaseStation].self) ?? []
             }
             savedStations.forEach({ $0.isInPersistence = true })
-            delegate.trainStationManager(didSend: savedStations)
+            DispatchQueue.main.async {
+                
+                delegate.trainStationManager(didSend: savedStations)
+            }
             for station in savedStations {
 
                 station.details = detailsFor(stationWithId: String( station.id ))
@@ -75,7 +78,6 @@ class TrainStationManager {
         }
         Storage.store(savedStations, to: .caches, as: "SavedStations.rede")
     }
-
 
     class func getAllStations() {
 

@@ -65,9 +65,9 @@ class StationViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
-        
+
         tableView.registerForCell(HeaderTableViewCell.identifier)
-        tableView.registerForCell(TrainStationTableViewCell.identifier)
+        tableView.registerForCell(StationDetailsTableViewCell.identifier)
     }
     
     private func setupMapViewRegion() {
@@ -108,22 +108,22 @@ extension StationViewController: UITableViewDelegate, UITableViewDataSource {
     private func cellFor(_ indexPath: IndexPath) -> TableCellPrototype {
         
         switch indexPath.item {
-        case 0:
-            return tableView.dequeueReusableCell(withIdentifier: HeaderTableViewCell.identifier, for: indexPath) as! HeaderTableViewCell
-            
-        default:
-             return tableView.dequeueReusableCell(withIdentifier: TrainStationTableViewCell.identifier,for: indexPath) as! TrainStationTableViewCell
+        case 0: return tableView.dequeueReusableCell(withIdentifier: HeaderTableViewCell.identifier, for: indexPath) as! HeaderTableViewCell
+        case 1: return tableView.dequeueReusableCell(withIdentifier: StationDetailsTableViewCell.identifier,for: indexPath) as! StationDetailsTableViewCell
+
+        default: return tableView.dequeueReusableCell(withIdentifier: StationDetailsTableViewCell.identifier,for: indexPath) as! StationDetailsTableViewCell
         }
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        120
+        2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = cellFor(indexPath)
+        cell.setup(with: trainStation)
         
         return cell
     }
@@ -140,7 +140,7 @@ extension StationViewController: UITableViewDelegate, UITableViewDataSource {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
                 
         let dimentionChange = scrollView.contentOffset.y * -1
-        if mapHeight.constant > minDimension || dimentionChange > 0 {
+        if mapHeight.constant > minDimension || dimentionChange >= -115 {
             
             let newDimensions = (250 + dimentionChange) >= minDimension ? (250 + dimentionChange) : minDimension
             mapHeight.constant = newDimensions!

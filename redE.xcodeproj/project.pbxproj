@@ -17,6 +17,10 @@
 		596CF14323607A2B00ED1A03 /* StationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 596CF14223607A2B00ED1A03 /* StationScreen.swift */; };
 		59767FEE2362259300D5BCE1 /* StationSearchScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59767FED2362259300D5BCE1 /* StationSearchScreen.swift */; };
 		59767FF0236238FF00D5BCE1 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59767FEF236238FF00D5BCE1 /* HomeScreen.swift */; };
+		5996B07E23CF558F006533E9 /* StationDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5996B07C23CF558F006533E9 /* StationDetailsTableViewCell.swift */; };
+		5996B07F23CF558F006533E9 /* StationDetailsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5996B07D23CF558F006533E9 /* StationDetailsTableViewCell.xib */; };
+		5996B08223CF6569006533E9 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5996B08023CF6569006533E9 /* ContactsTableViewCell.swift */; };
+		5996B08323CF6569006533E9 /* ContactsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5996B08123CF6569006533E9 /* ContactsTableViewCell.xib */; };
 		59B9C2B02362DEA80019ABEB /* NavigationConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59B9C2AF2362DEA80019ABEB /* NavigationConfigurator.swift */; };
 		59CCF90023CE13E9001F8B04 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59CCF8FE23CE13E9001F8B04 /* HomeViewController.swift */; };
 		59CCF90123CE13E9001F8B04 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 59CCF8FF23CE13E9001F8B04 /* HomeViewController.xib */; };
@@ -57,6 +61,10 @@
 		596CF14223607A2B00ED1A03 /* StationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationScreen.swift; sourceTree = "<group>"; };
 		59767FED2362259300D5BCE1 /* StationSearchScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationSearchScreen.swift; sourceTree = "<group>"; };
 		59767FEF236238FF00D5BCE1 /* HomeScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeScreen.swift; sourceTree = "<group>"; };
+		5996B07C23CF558F006533E9 /* StationDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationDetailsTableViewCell.swift; sourceTree = "<group>"; };
+		5996B07D23CF558F006533E9 /* StationDetailsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StationDetailsTableViewCell.xib; sourceTree = "<group>"; };
+		5996B08023CF6569006533E9 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
+		5996B08123CF6569006533E9 /* ContactsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContactsTableViewCell.xib; sourceTree = "<group>"; };
 		59B9C2AF2362DEA80019ABEB /* NavigationConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationConfigurator.swift; sourceTree = "<group>"; };
 		59CCF8FE23CE13E9001F8B04 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		59CCF8FF23CE13E9001F8B04 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
@@ -139,6 +147,10 @@
 				59CCF90823CE1DA1001F8B04 /* TrainStationTableViewCell.xib */,
 				59CCF91023CE456C001F8B04 /* HeaderTableViewCell.swift */,
 				59CCF91123CE456C001F8B04 /* HeaderTableViewCell.xib */,
+				5996B07C23CF558F006533E9 /* StationDetailsTableViewCell.swift */,
+				5996B07D23CF558F006533E9 /* StationDetailsTableViewCell.xib */,
+				5996B08023CF6569006533E9 /* ContactsTableViewCell.swift */,
+				5996B08123CF6569006533E9 /* ContactsTableViewCell.xib */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -317,10 +329,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				59F47E162351BDC8001F8C47 /* LaunchScreen.storyboard in Resources */,
+				5996B07F23CF558F006533E9 /* StationDetailsTableViewCell.xib in Resources */,
 				59CCF91323CE456C001F8B04 /* HeaderTableViewCell.xib in Resources */,
 				59CCF90A23CE1DA1001F8B04 /* TrainStationTableViewCell.xib in Resources */,
 				59E13A0E23631183003C4E54 /* Localizable.strings in Resources */,
 				59CCF90F23CE22F2001F8B04 /* StationViewController.xib in Resources */,
+				5996B08323CF6569006533E9 /* ContactsTableViewCell.xib in Resources */,
 				59CCF90623CE1A5B001F8B04 /* SearchViewController.xib in Resources */,
 				59CCF90123CE13E9001F8B04 /* HomeViewController.xib in Resources */,
 				59F47E132351BDC8001F8C47 /* Preview Assets.xcassets in Resources */,
@@ -347,10 +361,12 @@
 				590533A4235F09300005CA8B /* TrainStation.swift in Sources */,
 				592AA0872361980200091ED1 /* ContactCard.swift in Sources */,
 				59767FEE2362259300D5BCE1 /* StationSearchScreen.swift in Sources */,
+				5996B07E23CF558F006533E9 /* StationDetailsTableViewCell.swift in Sources */,
 				59CCF90023CE13E9001F8B04 /* HomeViewController.swift in Sources */,
 				590533A6235F09820005CA8B /* TrainStationManager.swift in Sources */,
 				59CCF90E23CE22F2001F8B04 /* StationViewController.swift in Sources */,
 				59767FF0236238FF00D5BCE1 /* HomeScreen.swift in Sources */,
+				5996B08223CF6569006533E9 /* ContactsTableViewCell.swift in Sources */,
 				59CCF90523CE1A5B001F8B04 /* SearchViewController.swift in Sources */,
 				592AA08D2361C28C00091ED1 /* ScheduleCard.swift in Sources */,
 				59CCF90923CE1DA1001F8B04 /* TrainStationTableViewCell.swift in Sources */,
