@@ -10,7 +10,13 @@ import UIKit
 import MapKit
 import KeirmotUtils
 
-class StationViewController: UIViewController {
+protocol StationScheduleDelegate where Self:UIViewController {
+    func currentType() -> ScheduleType
+    func updateSchedule(to newType: ScheduleType)
+    func currentSchedules() -> [ScheduleDetail]
+}
+
+class StationViewController: UIViewController, StationScheduleDelegate {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var viewFilter: UIView!
@@ -22,6 +28,7 @@ class StationViewController: UIViewController {
     private var topPadding: CGFloat!
     private var barHeight: CGFloat!
     private var minDimension: CGFloat!
+    private var selectedScheduleType: ScheduleType = .departure
 
     //MARK: - Initializers
     init(withStation trainStation: BaseStation) {
@@ -68,6 +75,9 @@ class StationViewController: UIViewController {
 
         tableView.registerForCell(HeaderTableViewCell.identifier)
         tableView.registerForCell(StationDetailsTableViewCell.identifier)
+        tableView.registerForCell(ContactsTableViewCell.identifier)
+        tableView.registerForCell(ScheduleTypeTableViewCell.identifier)
+        tableView.registerForCell(ScheduleTableViewCell.identifier)
     }
     
     private func setupMapViewRegion() {
@@ -101,6 +111,30 @@ class StationViewController: UIViewController {
         let searchButton =  UIBarButtonItem(image: UIImage(systemName: imageName), style: .plain, target: self, action: #selector(didTapSave))
         navigationItem.rightBarButtonItem = searchButton
     }
+    
+    func currentType() -> ScheduleType {
+        
+        return selectedScheduleType
+    }
+    
+    func updateSchedule(to newType: ScheduleType) {
+        
+        selectedScheduleType = newType
+        tableView.reloadData()
+    }
+    
+    func currentSchedules() -> [ScheduleDetail] {
+        
+        if selectedScheduleType == .arrival {
+            
+            return trainStation.arrivingScheduleDetails
+        }
+        else {
+            
+            return trainStation.departingScheduleDetails
+        }
+    }
+
 }
 
 extension StationViewController: UITableViewDelegate, UITableViewDataSource {
@@ -108,22 +142,35 @@ extension StationViewController: UITableViewDelegate, UITableViewDataSource {
     private func cellFor(_ indexPath: IndexPath) -> TableCellPrototype {
         
         switch indexPath.item {
-        case 0: return tableView.dequeueReusableCell(withIdentifier: HeaderTableViewCell.identifier, for: indexPath) as! HeaderTableViewCell
-        case 1: return tableView.dequeueReusableCell(withIdentifier: StationDetailsTableViewCell.identifier,for: indexPath) as! StationDetailsTableViewCell
-
-        default: return tableView.dequeueReusableCell(withIdentifier: StationDetailsTableViewCell.identifier,for: indexPath) as! StationDetailsTableViewCell
+            case 0: return tableView.dequeueReusableCell(withIdentifier: HeaderTableViewCell.identifier, for: indexPath) as! HeaderTableViewCell
+            case 1: return tableView.dequeueReusableCell(withIdentifier: StationDetailsTableViewCell.identifier,for: indexPath) as! StationDetailsTableViewCell
+            case 2: return tableView.dequeueReusableCell(withIdentifier: ContactsTableViewCell.identifier,for: indexPath) as! ContactsTableViewCell
+            case 3: return tableView.dequeueReusableCell(withIdentifier: ScheduleTypeTableViewCell.identifier,for: indexPath) as! ScheduleTypeTableViewCell
+            default: return tableView.dequeueReusableCell(withIdentifier: ScheduleTableViewCell.identifier,for: indexPath) as! ScheduleTableViewCell
+        }
+    }
+    
+    private func dataFor(_ indexPath: IndexPath) -> Any {
+        switch indexPath.item {
+            case 0, 2, 3: return trainStation
+            case 1: return trainStation
+            default:
+                let currentSchedulesCount = currentSchedules().count
+                let currentIndex = indexPath.item - 4
+                let data = currentIndex < currentSchedulesCount ? currentSchedules()[currentIndex] : currentSchedules().last
+                return data!
         }
     }
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        2
+        return 4 + currentSchedules().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = cellFor(indexPath)
-        cell.setup(with: trainStation)
+        cell.setup(with: dataFor(indexPath))
         
         return cell
     }

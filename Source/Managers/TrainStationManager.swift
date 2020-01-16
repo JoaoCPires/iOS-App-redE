@@ -22,8 +22,8 @@ protocol TrainStationManagerDelegate {
 class TrainStationManager {
 
     private static let baseStationEndPoint: String = "http://www.infraestruturasdeportugal.pt/rede/estacoes/json/"
-    private static let departuresEndPoint = "http://www.infraestruturasdeportugal.pt/negocios-e-servicos/horarios/partidas"
-    private static let arrivalsEndPoint = "http://www.infraestruturasdeportugal.pt/negocios-e-servicos/horarios/chegadas"
+    private static let departuresEndPoint = "https://www.infraestruturasdeportugal.pt/pt-pt/negocios-e-servicos/horarios/partidas"
+    private static let arrivalsEndPoint = "https://www.infraestruturasdeportugal.pt/pt-pt/negocios-e-servicos/horarios/chegadas"
     private static let stationDetailEndPoint = "https://keirmot.github.io/apis/rede-app.json"
 
     private static var allStations = TrainStations()

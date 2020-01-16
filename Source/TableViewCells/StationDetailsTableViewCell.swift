@@ -31,7 +31,7 @@ class StationDetailsTableViewCell: UITableViewCell, TableCellPrototype {
     
     private func setupLabels() {
         
-        labelStationName.text = station.name
+        labelStationName.text = station.stationName
         labelStationLine.text = station.details.linha
         labelStationAddress.text = station.details.morada
     }

@@ -23,13 +23,13 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGm-ts-aPm">
-                        <rect key="frame" x="20" y="43" width="280" height="14.5"/>
+                        <rect key="frame" x="20" y="51" width="280" height="14.5"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" alignment="center" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="9NK-Y2-J7T">
-                        <rect key="frame" x="20" y="61.5" width="32" height="32"/>
+                        <rect key="frame" x="20" y="73.5" width="32" height="32"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C2y-Gx-OGr">
                                 <rect key="frame" x="0.0" y="0.0" width="32" height="32"/>
@@ -55,7 +55,7 @@
                         </constraints>
                     </stackView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gel-jx-f42">
-                        <rect key="frame" x="20" y="28.5" width="280" height="14.5"/>
+                        <rect key="frame" x="20" y="32.5" width="280" height="14.5"/>
                         <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
@@ -66,12 +66,12 @@
                     <constraint firstAttribute="trailing" secondItem="TGm-ts-aPm" secondAttribute="trailing" constant="20" id="GRP-jl-FBz"/>
                     <constraint firstItem="gel-jx-f42" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="Gdh-gT-qwH"/>
                     <constraint firstAttribute="trailing" secondItem="gel-jx-f42" secondAttribute="trailing" constant="20" id="ItU-EE-zeO"/>
-                    <constraint firstItem="gel-jx-f42" firstAttribute="top" secondItem="qMl-S6-rdf" secondAttribute="bottom" id="NsB-Gc-uFn"/>
+                    <constraint firstItem="gel-jx-f42" firstAttribute="top" secondItem="qMl-S6-rdf" secondAttribute="bottom" constant="4" id="NsB-Gc-uFn"/>
                     <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9NK-Y2-J7T" secondAttribute="trailing" constant="20" id="R7b-5T-xOl"/>
                     <constraint firstItem="qMl-S6-rdf" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="S6E-4l-2IG"/>
                     <constraint firstItem="9NK-Y2-J7T" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="VTy-oJ-IzQ"/>
-                    <constraint firstItem="9NK-Y2-J7T" firstAttribute="top" secondItem="TGm-ts-aPm" secondAttribute="bottom" constant="4" id="b9d-Xx-0H8"/>
-                    <constraint firstItem="TGm-ts-aPm" firstAttribute="top" secondItem="gel-jx-f42" secondAttribute="bottom" id="dtd-ck-eon"/>
+                    <constraint firstItem="9NK-Y2-J7T" firstAttribute="top" secondItem="TGm-ts-aPm" secondAttribute="bottom" constant="8" id="b9d-Xx-0H8"/>
+                    <constraint firstItem="TGm-ts-aPm" firstAttribute="top" secondItem="gel-jx-f42" secondAttribute="bottom" constant="4" id="dtd-ck-eon"/>
                     <constraint firstAttribute="trailing" secondItem="qMl-S6-rdf" secondAttribute="trailing" constant="20" id="mKk-LB-ax2"/>
                     <constraint firstItem="qMl-S6-rdf" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="oWA-0s-IKr"/>
                     <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="9NK-Y2-J7T" secondAttribute="bottom" constant="8" id="trE-Ac-Bmw"/>

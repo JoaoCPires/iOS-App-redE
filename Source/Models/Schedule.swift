@@ -6,11 +6,30 @@
 //  Copyright © 2018 Joao Pires. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum ScheduleType {
     case arrival
     case departure
+    
+    var indexForType: Int {
+        if self == .arrival {
+            return 1
+        }
+        else {
+            return 0
+        }
+    }
+    
+    static func typeForIndex(_ index: Int) -> ScheduleType {
+        if index == 1 {
+            return .arrival
+        }
+        else {
+            return .departure
+        }
+
+    }
 }
 
 enum ScheduleStatus {
@@ -23,6 +42,23 @@ enum ScheduleStatus {
         case .delayed: return "label.delayed".localized
         case .onTime: return "label.on.time".localized
         case .canceled: return "label.canceled".localized
+        }
+    }
+    
+    var color: UIColor {
+        switch self {
+            case .onTime: return AppColors.colorOnTime
+            case .delayed: return AppColors.colorDelayed
+            case .canceled: return AppColors.colorCanceled
+        }
+    }
+    
+    var icon: UIImage {
+
+        switch self {
+            case .onTime: return UIImage(named: "icOnTime")!
+            case .delayed: return UIImage(named:"icDelayed")!
+            case .canceled: return UIImage(named:"icCanceled")!
         }
     }
 }
@@ -48,11 +84,11 @@ class ScheduleDetail: Codable, Identifiable {
     var status: ScheduleStatus {
 
         let status = estadoComboio?.nome ?? String()
-        var result = ScheduleStatus.onTime
+        var result = ScheduleStatus.delayed
 
-        result = status.contains("trasado") ? .delayed : result
-        result = status.contains("uprimido") ? .canceled : result
-        
+        result = status.contains("À tabela") ? .onTime : result
+        result = status.contains("SUPRIMIDO") ? .canceled : result
+
         return result
 
     }
@@ -72,18 +108,40 @@ class ScheduleDetail: Codable, Identifiable {
 
         let calendar = Calendar.current
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         dateFormatter.locale = Locale(identifier: "pt")
 
         switch type {
         case .arrival:
-            let date = dateFormatter.date(from: horaChegada!)!
-            let components = calendar.dateComponents([.hour, .minute], from: date)
+            
+            let date: Date
+            if let dateWithDefaultFormate = dateFormatter.date(from: horaChegada!) {
+                
+                date = dateWithDefaultFormate
+            }
+            else {
+                
+                dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+                date = dateFormatter.date(from: horaChegada!)!
+            }
 
-            return ("\("label.arrival".localized): \(components.hour ?? 0):\(components.minute ?? 0)").capitalized(with: Locale(identifier: "pt"))
+            let components = calendar.dateComponents([.hour, .minute], from: date)
+            let hour = ((components.hour ?? 0) < 10) ? "0\((components.hour ?? 0))" : "\(components.hour ?? 0)"
+            let minute = ((components.minute ?? 0) < 10) ? "0\((components.minute ?? 0))" : "\(components.minute ?? 0)"
+
+            return ("\("label.arrival".localized): \(hour):\(minute)").capitalized(with: Locale(identifier: "pt"))
 
         case .departure:
-            let date = dateFormatter.date(from: horaPartida!)!
+            let date: Date
+            if let dateWithDefaultFormate = dateFormatter.date(from: horaPartida!) {
+                
+                date = dateWithDefaultFormate
+            }
+            else {
+                
+                dateFormatter.dateFormat = "dd-MM-yyyy HH:mm:ss"
+                date = dateFormatter.date(from: horaPartida!)!
+            }
             let components = calendar.dateComponents([.hour, .minute], from: date)
             let hour = ((components.hour ?? 0) < 10) ? "0\((components.hour ?? 0))" : "\(components.hour ?? 0)"
             let minute = ((components.minute ?? 0) < 10) ? "0\((components.minute ?? 0))" : "\(components.minute ?? 0)"

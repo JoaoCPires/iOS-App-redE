@@ -18,16 +18,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "410A89B1-7AAC-46B8-9610-48183C733782"
-            shouldBeEnabled = "Yes"
+            uuid = "071FC97A-64EF-4312-B4E7-CB91212DDFC9"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Source/ViewControllers/SearchViewController.swift"
+            filePath = "Source/Managers/TrainStationManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "trainStationManager(didSend:)"
+            startingLineNumber = "158"
+            endingLineNumber = "158"
+            landmarkName = "getStationSchedulesFor(scheduleType:stationWithId:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
