@@ -47,7 +47,7 @@ class TrainStationTableViewCell: UITableViewCell, TableCellPrototype {
             
             let icon = UIImage(named: $0.imageName)
             let imageView = UIImageView(image: icon)
-            imageView.tintColor = .systemBackground
+            imageView.tintColor = .white
             imageView.clipsToBounds = true
             imageView.contentMode = .scaleAspectFill
             
@@ -65,7 +65,7 @@ class TrainStationTableViewCell: UITableViewCell, TableCellPrototype {
         
         viewContainer.layer.cornerRadius = 10
         viewContainer.layer.masksToBounds = false
-        viewContainer.layer.shadowColor = UIColor.black.cgColor
+        viewContainer.layer.shadowColor = UIColor.label.cgColor
         viewContainer.layer.shadowOpacity = 0.2
         viewContainer.layer.shadowOffset = CGSize(width: -1, height: 1)
         viewContainer.layer.shadowRadius = 3

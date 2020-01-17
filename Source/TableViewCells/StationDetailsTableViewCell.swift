@@ -49,7 +49,7 @@ class StationDetailsTableViewCell: UITableViewCell, TableCellPrototype {
             
             let icon = UIImage(named: $0.imageName)
             let imageView = UIImageView(image: icon)
-            imageView.tintColor = .systemBackground
+            imageView.tintColor = .white
             imageView.clipsToBounds = true
             imageView.contentMode = .scaleAspectFill
             

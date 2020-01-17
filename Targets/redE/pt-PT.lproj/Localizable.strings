@@ -24,7 +24,8 @@ label.origin = "Origem";
 label.on.time = "À tabela";
 label.delayed = "Atrasado";
 label.canceled = "Cancelado";
-label.add.stations = "Procure por uma estação e salve precionando ⭐️";
+label.add.stations = "Procure por uma estação e guarde precionando ⭐️";
+label.no.results.found = "A pesquisa não obteve resultados";
 
 // MARK: - Accessibilty
 accessibilty.arrivals.departures = "Partidas e Chegadas";

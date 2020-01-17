@@ -34,7 +34,7 @@ class ContactCollectionViewCell: UICollectionViewCell, CollectionCellPrototype {
         
         viewContainer.layer.cornerRadius = 10
         viewContainer.layer.masksToBounds = false
-        viewContainer.layer.shadowColor = UIColor.black.cgColor
+        viewContainer.layer.shadowColor = UIColor.label.cgColor
         viewContainer.layer.shadowOpacity = 0.2
         viewContainer.layer.shadowOffset = CGSize(width: -1, height: 1)
         viewContainer.layer.shadowRadius = 3

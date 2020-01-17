@@ -11,6 +11,9 @@ import KeirmotUtils
 
 class SearchViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var viewEmpty: UIView!
+    @IBOutlet weak var labelNoResults: UILabel!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     static let identifier: String = "SearchViewController"
 
@@ -35,6 +38,7 @@ class SearchViewController: UIViewController {
         
         setupSearchBar()
         setupTableView()
+        setupEmptyView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -66,6 +70,14 @@ class SearchViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerForCell(TrainStationTableViewCell.identifier)
+    }
+    
+    private func setupEmptyView() {
+        
+        labelNoResults.text = "label.no.results.found".localized
+        viewEmpty.isHidden = true
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = true
     }
     
     //MARK: - Methods
@@ -108,6 +120,8 @@ extension SearchViewController: UISearchResultsUpdating, UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
         TrainStationManager.getStations(withName: searchTerm, to: self)
+        viewEmpty.isHidden = true
+        activityIndicator.isHidden = false
     }
     
 }
@@ -117,7 +131,9 @@ extension SearchViewController: TrainStationsManagerDelegate {
     func trainStationManager(didSend trainsStations: [BaseStation]) {
         
         navigationItem.searchController?.dismiss(animated: true)
+        activityIndicator.isHidden = true
         self.trainStations = trainsStations
+        viewEmpty.isHidden = trainStations.count > 0
         tableView.reloadData()
     }
     

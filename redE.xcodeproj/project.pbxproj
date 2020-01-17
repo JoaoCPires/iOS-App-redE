@@ -14,6 +14,8 @@
 		590533B1235F100C0005CA8B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 590533B0235F100C0005CA8B /* Constants.swift */; };
 		592AA0872361980200091ED1 /* ContactCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592AA0862361980200091ED1 /* ContactCard.swift */; };
 		592AA08D2361C28C00091ED1 /* ScheduleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 592AA08C2361C28C00091ED1 /* ScheduleCard.swift */; };
+		595168EA23D1A25400CDAC2C /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595168E823D1A25400CDAC2C /* LoadingViewController.swift */; };
+		595168EB23D1A25400CDAC2C /* LoadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 595168E923D1A25400CDAC2C /* LoadingViewController.xib */; };
 		5959042823D0B018000F9C95 /* ScheduleTypeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5959042623D0B018000F9C95 /* ScheduleTypeTableViewCell.swift */; };
 		5959042923D0B018000F9C95 /* ScheduleTypeTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5959042723D0B018000F9C95 /* ScheduleTypeTableViewCell.xib */; };
 		5959042C23D0B651000F9C95 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5959042A23D0B651000F9C95 /* ScheduleTableViewCell.swift */; };
@@ -64,6 +66,8 @@
 		590533B0235F100C0005CA8B /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		592AA0862361980200091ED1 /* ContactCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactCard.swift; sourceTree = "<group>"; };
 		592AA08C2361C28C00091ED1 /* ScheduleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleCard.swift; sourceTree = "<group>"; };
+		595168E823D1A25400CDAC2C /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		595168E923D1A25400CDAC2C /* LoadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingViewController.xib; sourceTree = "<group>"; };
 		5959042623D0B018000F9C95 /* ScheduleTypeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTypeTableViewCell.swift; sourceTree = "<group>"; };
 		5959042723D0B018000F9C95 /* ScheduleTypeTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ScheduleTypeTableViewCell.xib; sourceTree = "<group>"; };
 		5959042A23D0B651000F9C95 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
@@ -151,6 +155,8 @@
 		59CCF90223CE13EE001F8B04 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				595168E823D1A25400CDAC2C /* LoadingViewController.swift */,
+				595168E923D1A25400CDAC2C /* LoadingViewController.xib */,
 				59CCF8FE23CE13E9001F8B04 /* HomeViewController.swift */,
 				59CCF8FF23CE13E9001F8B04 /* HomeViewController.xib */,
 				59CCF90323CE1A5B001F8B04 /* SearchViewController.swift */,
@@ -357,6 +363,7 @@
 				59F47E162351BDC8001F8C47 /* LaunchScreen.storyboard in Resources */,
 				5996B07F23CF558F006533E9 /* StationDetailsTableViewCell.xib in Resources */,
 				59CCF91323CE456C001F8B04 /* HeaderTableViewCell.xib in Resources */,
+				595168EB23D1A25400CDAC2C /* LoadingViewController.xib in Resources */,
 				59CCF90A23CE1DA1001F8B04 /* TrainStationTableViewCell.xib in Resources */,
 				59E13A0E23631183003C4E54 /* Localizable.strings in Resources */,
 				59CCF90F23CE22F2001F8B04 /* StationViewController.xib in Resources */,
@@ -398,6 +405,7 @@
 				59CCF90E23CE22F2001F8B04 /* StationViewController.swift in Sources */,
 				59767FF0236238FF00D5BCE1 /* HomeScreen.swift in Sources */,
 				5996B08223CF6569006533E9 /* ContactsTableViewCell.swift in Sources */,
+				595168EA23D1A25400CDAC2C /* LoadingViewController.swift in Sources */,
 				59CCF90523CE1A5B001F8B04 /* SearchViewController.swift in Sources */,
 				5959042823D0B018000F9C95 /* ScheduleTypeTableViewCell.swift in Sources */,
 				592AA08D2361C28C00091ED1 /* ScheduleCard.swift in Sources */,
@@ -580,7 +588,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2019.5;
+				MARKETING_VERSION = 2020.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.keirmot.redE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -602,7 +610,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2019.5;
+				MARKETING_VERSION = 2020.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.keirmot.redE;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

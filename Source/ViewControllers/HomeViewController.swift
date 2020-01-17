@@ -10,6 +10,8 @@ import UIKit
 
 class HomeViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var viewEmpty: UIView!
+    @IBOutlet weak var labelEmpty: UILabel!
     
     static let identifier: String = "HomeViewController"
 
@@ -33,6 +35,7 @@ class HomeViewController: UIViewController {
         
         setupNavigationBar()
         setupTableView()
+        setupEmptyView()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -54,6 +57,13 @@ class HomeViewController: UIViewController {
         tableView.dataSource = self
         tableView.registerForCell(TrainStationTableViewCell.identifier)
     }
+    
+    private func setupEmptyView() {
+        
+        labelEmpty.text = "label.add.stations".localized
+        viewEmpty.isHidden = false
+    }
+
     
     //MARK: - Actions
     @objc func didTapSearch() {
@@ -92,6 +102,7 @@ extension HomeViewController: TrainStationsManagerDelegate {
     func trainStationManager(didSend trainsStations: [BaseStation]) {
         
         self.trainStations = trainsStations
+        viewEmpty.isHidden = trainStations.count > 0
         tableView.reloadData()
     }
 
